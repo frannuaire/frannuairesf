@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\99q5Partner" table="99q5_partner">
+    <id name="linkId" type="integer" column="link_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="href" type="string" column="href" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="label" type="string" column="label" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="title" type="string" column="title" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="lang" type="string" column="lang" length="2" nullable="false">
+      <options>
+        <option name="fixed">1</option>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="rel" type="string" column="rel" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="position" type="integer" column="position" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

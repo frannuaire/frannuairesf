@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\99q5Link" table="99q5_link">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="uid" type="integer" column="uid" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="name" type="string" column="name" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="url" type="string" column="url" length="150" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="description" type="text" column="description" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="state" type="boolean" column="state" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="category" type="integer" column="category" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="pr" type="boolean" column="pr" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="image" type="string" column="image" length="200" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="hits" type="integer" column="hits" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="prio" type="boolean" column="prio" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="vote" type="integer" column="vote" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="broken" type="boolean" column="broken" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="email" type="string" column="email" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="date" type="date" column="date" nullable="false"/>
+  </entity>
+</doctrine-mapping>
