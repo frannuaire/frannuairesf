@@ -3,18 +3,33 @@
 security:
 
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    encoders:
+        AppBundle\Entity\User: 
+            algorithm: md5
+            encode_as_base64: false
+            iterations: 0
+            
     providers:
-        in_memory:
-            memory: ~
+        user:
+            entity:
+                class: AppBundle:User
+                property: login
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-
+        
         main:
             anonymous: ~
+            form_login:
+                login_path: login
+                check_path: login
+            logout:
+                path: logout
+                target: login 
+                
             # activate different ways to authenticate
 
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
