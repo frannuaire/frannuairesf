@@ -13,10 +13,13 @@
        {% block stylesheets %}{% endblock %}
   </head>
   <body>
+              <div id="sidebar">
+    {{ render(controller(
+        'AppBundle:Menu:menu'
+    )) }}
+</div>
    {% block header %}
-    <header class='header'>
-      
- </header>
+
    {% endblock %}
             {% block body %}{% endblock %}
       

@@ -33,3 +33,12 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+    app.menu.menu:
+        class: AppBundle\Service\Menu\Menu
+    
+    app.menu.items.items:
+        class: AppBundle\Service\Menu\Items
+    
+    app.menu.items.item:
+        class: AppBundle\Service\Menu\Item
+        
