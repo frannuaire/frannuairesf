@@ -1,0 +1,40 @@
+{% extends 'bootstrap.html.twig' %}
+
+{% block body %}
+    <header class='header'>
+        <div class="container">
+            <div class='row'> 
+                <h1>{{'home.title'|trans}}</h1>
+            </div>
+        </div>
+        <div class="container">
+            <div class='row'> 
+                {%for cat in categories%}
+
+                    {% if loop.index is divisible by(3) %}
+
+
+                        <div class="col">
+                            <a href="{{ path('_category', {'id': cat.id}) }}" style='color:#fff;'>{{cat.name}}</a>
+                        </div>
+                    {% elseif loop.index is divisible by(2)%}
+
+                        <div class="col" style='color:#fff;'>
+                            <a href="#" style='color:#fff;'>{{cat.name}}</a>
+                        </div>
+                    {% else %}
+                    </div> <div class='row'> 
+                        <div class="col" style='color:#000;'>
+                            <a href="#" style='color:#fff;'>{{cat.name}}</a>
+                        </div> 
+                    {% endif %}
+
+                {%endfor %}    
+
+            </div>
+        </div>    
+
+    </header>
+
+{% endblock %}
+

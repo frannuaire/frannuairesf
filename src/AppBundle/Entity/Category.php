@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="99q5_category")
  * @ORM\Entity
  */
-class 99q5Category
+class Category
 {
     /**
      * @var string
@@ -41,6 +41,38 @@ class 99q5Category
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
+    function getName() {
+        return $this->name;
+    }
+
+    function getRoot() {
+        return $this->root;
+    }
+
+    function getUsable() {
+        return $this->usable;
+    }
+
+    function getId() {
+        return $this->id;
+    }
+
+    function setName($name) {
+        $this->name = $name;
+    }
+
+    function setRoot($root) {
+        $this->root = $root;
+    }
+
+    function setUsable($usable) {
+        $this->usable = $usable;
+    }
+
+    function setId($id) {
+        $this->id = $id;
+    }
 
 
 }

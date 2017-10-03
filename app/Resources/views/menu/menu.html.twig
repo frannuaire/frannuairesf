@@ -1,1 +1,13 @@
-{{menu|raw}}
+{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+    <ul>      
+        <li> <a class="link" href="{{ path('board') }}">{{'Dashboard'|trans}}</a></li>
+        <li> <a class="link" href="{{ path('logout') }}">{{'Logout'|trans}}</a></li>
+   
+    </ul>
+{% else %}
+  <ul>      
+        <li> <a class="link" href="{{ path('homepage') }}">{{'Home'|trans}}</a></li>
+        <li> <a class="link" href="{{ path('login') }}">{{'Login'|trans}}</a></li>
+   
+    </ul>
+{% endif %}

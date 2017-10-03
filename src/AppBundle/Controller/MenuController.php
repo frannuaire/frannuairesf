@@ -18,21 +18,15 @@ class MenuController extends Controller{
     
     /**
      * @Route("/menu", name="menu")
+     * 
      */
     public function menuAction(){
         
-       // $menu = $this->get('app.menu.menu');
-        $menu = new Menu();
-        $accueil = new item('Acceuil');
-        $inscription = new item('Inscription');
-        $items = new Items();
-        $items->addItem($accueil);
-        $items->addItem($inscription);
-        $menu->addItems($items);
+       
              
         return $this->render('menu/menu.html.twig', [
             'test'=>'coucou',
-            'menu'=>$menu->getMenu(),
+            'menu'=>'',
         ]); 
         
     }
