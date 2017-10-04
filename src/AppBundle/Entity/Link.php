@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="99q5_link")
  * @ORM\Entity
  */
-class 99q5Link
+class Link
 {
     /**
      * @var integer
@@ -118,6 +118,126 @@ class 99q5Link
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+    function getUid() {
+        return $this->uid;
+    }
+
+    function getName() {
+        return $this->name;
+    }
+
+    function getUrl() {
+        return $this->url;
+    }
+
+    function getDescription() {
+        return $this->description;
+    }
+
+    function getState() {
+        return $this->state;
+    }
+
+    function getCategory() {
+        return $this->category;
+    }
+
+    function getPr() {
+        return $this->pr;
+    }
+
+    function getImage() {
+        return $this->image;
+    }
+
+    function getHits() {
+        return $this->hits;
+    }
+
+    function getPrio() {
+        return $this->prio;
+    }
+
+    function getVote() {
+        return $this->vote;
+    }
+
+    function getBroken() {
+        return $this->broken;
+    }
+
+    function getEmail() {
+        return $this->email;
+    }
+
+    function getDate(): \DateTime {
+        return $this->date;
+    }
+
+    function getId() {
+        return $this->id;
+    }
+
+    function setUid($uid) {
+        $this->uid = $uid;
+    }
+
+    function setName($name) {
+        $this->name = $name;
+    }
+
+    function setUrl($url) {
+        $this->url = $url;
+    }
+
+    function setDescription($description) {
+        $this->description = $description;
+    }
+
+    function setState($state) {
+        $this->state = $state;
+    }
+
+    function setCategory($category) {
+        $this->category = $category;
+    }
+
+    function setPr($pr) {
+        $this->pr = $pr;
+    }
+
+    function setImage($image) {
+        $this->image = $image;
+    }
+
+    function setHits($hits) {
+        $this->hits = $hits;
+    }
+
+    function setPrio($prio) {
+        $this->prio = $prio;
+    }
+
+    function setVote($vote) {
+        $this->vote = $vote;
+    }
+
+    function setBroken($broken) {
+        $this->broken = $broken;
+    }
+
+    function setEmail($email) {
+        $this->email = $email;
+    }
+
+    function setDate(\DateTime $date) {
+        $this->date = $date;
+    }
+
+    function setId($id) {
+        $this->id = $id;
+    }
+
 
 
 }

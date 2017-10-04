@@ -31,12 +31,31 @@ class AnnuaireController extends Controller {
      * 
      */
     public function categoryAction(Request $request, $id) {
+        // get current category
+        $selectCategory = $this->getDoctrine()
+                ->getRepository(\AppBundle\Entity\Category::class)
+                ->find($id);
+        // get current category text
+        $textCategory = $this->getDoctrine()
+                ->getRepository(\AppBundle\Entity\Categorytext::class)
+                ->findOneBy(array('catexCategory'=>$id));
+
+        // get sub category
         $cat = $this->getDoctrine()
                 ->getRepository(\AppBundle\Entity\Category::class)
                 ->findBy(array('root' => $id));
+        
+        // get website category
+        $websites = $this->getDoctrine()
+                ->getRepository(\AppBundle\Entity\Link::class)
+                ->findBy(array('category' => $id),array('prio'=>'desc','date'=>'desc'), 10);
+
        
                 return $this->render('annuaire/category.html.twig', [
                     'categories' => $cat,
+                    'selectCategory' =>$selectCategory,
+                    'textCategory' =>$textCategory,
+                    'webSites' => $websites, 
         ]);
     }
 

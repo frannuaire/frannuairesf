@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="99q5_categorytext")
  * @ORM\Entity
  */
-class 99q5Categorytext
+class Categorytext
 {
     /**
      * @var integer
@@ -34,6 +34,31 @@ class 99q5Categorytext
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $catexId;
+    
+    function getCatexCategory() {
+        return $this->catexCategory;
+    }
+
+    function getCatexText() {
+        return $this->catexText;
+    }
+
+    function getCatexId() {
+        return $this->catexId;
+    }
+
+    function setCatexCategory($catexCategory) {
+        $this->catexCategory = $catexCategory;
+    }
+
+    function setCatexText($catexText) {
+        $this->catexText = $catexText;
+    }
+
+    function setCatexId($catexId) {
+        $this->catexId = $catexId;
+    }
+
 
 
 }
