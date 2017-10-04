@@ -48,8 +48,7 @@ class AnnuaireController extends Controller {
         // get website category
         $websites = $this->getDoctrine()
                 ->getRepository(\AppBundle\Entity\Link::class)
-                ->findBy(array('category' => $id),array('prio'=>'desc','date'=>'desc'), 10);
-
+                ->findBy(array('category' => $id),array('date'=>'desc','prio'=>'desc'), 10);
        
                 return $this->render('annuaire/category.html.twig', [
                     'categories' => $cat,

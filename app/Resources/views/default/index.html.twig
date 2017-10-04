@@ -13,7 +13,11 @@
     )) }}
         </div>
     </header>
-
+    <div class="container">
+        {% set vars = {'webSites': webSites} %}
+        {% include 'annuaire/categorySite.html.twig' with vars %}
+        
+    </div>  
 {% endblock %}
 
 
