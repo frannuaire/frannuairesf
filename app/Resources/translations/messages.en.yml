@@ -1,10 +1,24 @@
 category: Category
-textCategoryEmpty: "No category here"
-category.subcategory: Sub categories
-category.emptySub: "There is no sub categories here sorry"
-category.sites: "Category websites"
-home.title: "General directory with quality websites " 
+textCategoryEmpty: 'No category here'
+category.subcategory: 'Sub categories'
+category.emptySub: 'There is no sub categories here sorry'
+category.sites: 'Category websites'
+home.title: 'General directory with quality websites '
 Dashboard: Dashboard
 Logout: Logout
 Home: Home
 Login: Login
+slogan: __slogan
+more: __more
+Comments: __Comments
+rss: __rss
+commentof: __commentof
+home.description: __home.description
+site.title: __site.title
+home: __home
+dashboard: __dashboard
+search: __search
+login: __login
+logon: __logon
+username: __username
+password: __password

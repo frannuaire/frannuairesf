@@ -48,7 +48,8 @@ class AnnuaireController extends Controller {
         // get website category
         $websites = $this->getDoctrine()
                 ->getRepository(\AppBundle\Entity\Link::class)
-                ->findBy(array('category' => $id), array('date' => 'desc', 'prio' => 'desc'), 10);
+                ->findBy(array('category' => $id), 
+                        array('date' => 'desc', 'prio' => 'desc'), 10);
 
         return $this->render('annuaire/category.html.twig', [
                     'categories' => $cat,
@@ -71,13 +72,12 @@ class AnnuaireController extends Controller {
         $rss = $this->getDoctrine()
                 ->getRepository(\AppBundle\Entity\Feed::class)
                 ->findBy(array('linkid' => $id));
-        //      $parse = file_get_contents($rss[0]->getfeed());
 
         $sxe = null;
         if (count($rss) > 0) {
             $file = $rss[0]->getfeed();
             $file_headers = @get_headers($file);
-            if (!$file_headers || $file_headers[0] == 'HTTP/1.1 404 Not Found') {
+            if (!$file_headers || $file_headers[0] == 'HTTP/1.1 404 Not Found' || $file_headers[0] == 'HTTP/1.0 404 Not Found') {
                 $sxe = null;
             } else {
                  $sxe = simplexml_load_file($rss[0]->getfeed());
