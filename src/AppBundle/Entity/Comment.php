@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="99q5_comment")
  * @ORM\Entity
  */
-class 99q5Comment
+class Comment
 {
     /**
      * @var integer
@@ -55,6 +55,54 @@ class 99q5Comment
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+    function getLid() {
+        return $this->lid;
+    }
+
+    function getUid() {
+        return $this->uid;
+    }
+
+    function getMessage() {
+        return $this->message;
+    }
+
+    function getDate(): \DateTime {
+        return $this->date;
+    }
+
+    function getApproved() {
+        return $this->approved;
+    }
+
+    function getId() {
+        return $this->id;
+    }
+
+    function setLid($lid) {
+        $this->lid = $lid;
+    }
+
+    function setUid($uid) {
+        $this->uid = $uid;
+    }
+
+    function setMessage($message) {
+        $this->message = $message;
+    }
+
+    function setDate(\DateTime $date) {
+        $this->date = $date;
+    }
+
+    function setApproved($approved) {
+        $this->approved = $approved;
+    }
+
+    function setId($id) {
+        $this->id = $id;
+    }
+
 
 
 }

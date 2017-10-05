@@ -38,23 +38,46 @@ class AnnuaireController extends Controller {
         // get current category text
         $textCategory = $this->getDoctrine()
                 ->getRepository(\AppBundle\Entity\Categorytext::class)
-                ->findOneBy(array('catexCategory'=>$id));
+                ->findOneBy(array('catexCategory' => $id));
 
         // get sub category
         $cat = $this->getDoctrine()
                 ->getRepository(\AppBundle\Entity\Category::class)
                 ->findBy(array('root' => $id));
-        
+
         // get website category
         $websites = $this->getDoctrine()
                 ->getRepository(\AppBundle\Entity\Link::class)
-                ->findBy(array('category' => $id),array('date'=>'desc','prio'=>'desc'), 10);
-       
-                return $this->render('annuaire/category.html.twig', [
+                ->findBy(array('category' => $id), array('date' => 'desc', 'prio' => 'desc'), 10);
+
+        return $this->render('annuaire/category.html.twig', [
                     'categories' => $cat,
-                    'selectCategory' =>$selectCategory,
-                    'textCategory' =>$textCategory,
-                    'webSites' => $websites, 
+                    'selectCategory' => $selectCategory,
+                    'textCategory' => $textCategory,
+                    'webSites' => $websites,
+        ]);
+    }
+
+    /**
+     * @Route("/detail/{id}", name="_website")
+     */
+    public function detailsiteAction($id) {
+        $site = $this->getDoctrine()
+                ->getRepository(\AppBundle\Entity\Link::class)
+                ->find($id);
+        $comments = $this->getDoctrine()
+                ->getRepository(\AppBundle\Entity\Comment::class)
+                ->findBy(array('lid' => $id));
+        $rss = $this->getDoctrine()
+                ->getRepository(\AppBundle\Entity\Feed::class)
+                ->findBy(array('linkid' => $id));
+      //  $parse = file_get_contents($rss[0]->getfeed());
+         $sxe = simplexml_load_file($rss[0]->getfeed());
+       // die(var_dump($sxe));
+        return $this->render('annuaire/details.html.twig', [
+                    'webSites' => $site,
+                    'comments' => $comments,
+                    'rss' => $sxe,
         ]);
     }
 

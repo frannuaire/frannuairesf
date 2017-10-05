@@ -1,0 +1,77 @@
+{% extends 'bootstrap.html.twig' %}
+
+{% block body %}
+    <!-- Header details -->
+    <header class='header'>
+        <div class="container">
+            <div class='row'>
+                {% if webSites is defined %}      
+
+                    <div class='row'>
+                        <div class='col-lg-2'>
+                            {% if webSites.image is not empty %}
+                                <div class='col'><img width='150px;' src='{{webSites.image}}' alt='thumb {{webSites.name}}' class="img-thumbnail img-fluid " /></div>
+                                {% else %}
+                                <div class='col'><img width='150px;' src='{{ asset('img/no_image_available.svg')}}' alt='default thumb' class="img-thumbnail img-fluid " /></div>
+                                {% endif %}
+                        </div>
+
+                        <div class='col' style='scroll:auto;'>
+                            <h2><a href='{{webSites.url}}' target='_blank' title='{{webSites.description|length > 50 ? (webSites.description[:50] ~ '…') : webSites.description }}'>{{webSites.name}}</a></h2> 
+                            <div>
+                                {{webSites.description|raw }}
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                {% endif%}   
+
+            </div>
+            <div class='row'><script async 
+                src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- frAnnuaire -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-9603593050456448"
+                     data-ad-slot="5109858557"
+                     data-ad-format="auto"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script></div> 
+        </div>
+    </header>
+    <!-- End Header details -->
+
+    <!-- Collapse details -->
+    <p>
+        <a class="btn btn-primary" data-toggle="collapse" href="#comments" aria-expanded="true" aria-controls="multiCollapseExample1">{{'Comments'|trans}}</a>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#rss" aria-expanded="false" aria-controls="multiCollapseExample1">{{'rss'|trans}}</button>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements</button>
+    </p>
+    <div class="row">
+        <div class="col">
+            <div class="collapse multi-collapse" id="comments">
+                <div class="card card-body">    
+                    {% for comment in comments %}
+                        <div class='row'>
+                            <p>{{'commentof'|trans}} <time datetime="{{comment.date|date('d/m/Y') }}">{{comment.date|date('d/m/Y') }}</time></p>
+                                    {{comment.message}}
+                        </div>
+                    {% endfor %}   
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="collapse multi-collapse" id="rss">
+                <div class="card card-body">  
+                    {% for item in rss %}
+                        <a href='{{ item.link }}'> {{ item.title }}</a>
+                        {{ item.description|raw }}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

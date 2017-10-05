@@ -10,7 +10,9 @@ site.title: frannuaire-gratuit
 home: Accueil
 login: 'Se Connecter'
 search: Rechercher
-dashboard: Tableau de bord
+dashboard: 'Tableau de bord'
 logon: Connexion
 username: Utilisateur
-password: Mot de passe
+password: 'Mot de passe'
+slogan: 'L''annuaire générique francophone'
+home.description: 'Frannuaire-gratuit.com est un annuaire généraliste gratuit. Notre annuaire généraliste vous permet d''être mieux vu ou de rechercher sur le web simplement avec un résultat de qualité. Les sites sont classés par catégorie afin de clarifier la visibilité et la recherche dans l''annuaire. Les sites référencés dans l''annuaire sont visités manuellement et accepté selon des critères strict afin de vous garantir un contenu intéressant et riche.'

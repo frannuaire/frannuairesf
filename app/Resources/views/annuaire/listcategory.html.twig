@@ -3,19 +3,13 @@
         <div class='row'><h2>{{'category.subcategory'|trans}}</h2></div>
         <div class='row'> 
             {%for cat in categories%}
-                {% if loop.index is divisible by(5) %}
+                <div class="col-lg-3" style='color:#fff;'>
+                    <a href="{{ path('_category', {'id': cat.id}) }}" style='color:#fff;'>{{cat.name}}</a>
+                </div>               
+                {% if loop.index is divisible by(4)  %}
                 </div> <div class='row'> 
-                    <div class="col" style='color:#000;'>
-                        <a href="{{ path('_category', {'id': cat.id}) }}" style='color:#fff;'>{{cat.name}}</a>
-                    </div> 
-
-                {% else %}
-                    <div class="col" style='color:#fff;'>
-                        <a href="{{ path('_category', {'id': cat.id}) }}" style='color:#fff;'>{{cat.name}}</a>
-                    </div>
                 {% endif %}
-
-            {%endfor %}    
+            {%endfor %}     
 
         </div>
 

@@ -2,40 +2,35 @@
     <div class='row'>
         <h2>{{'category.sites'|trans}}</h2>
     </div>
+    <div class='row'><script async 
+        src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- frAnnuaire -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-9603593050456448"
+             data-ad-slot="5109858557"
+             data-ad-format="auto"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script></div> 
     <div class='row'> 
+        {% for site in webSites%}
+            <div class="card" style="width: 15rem;margin:5px;">
+                <img class="card-img-top" 
+                     {% if site.image is not empty %}
+                     src="{{site.image}}"  {% else %}
+                     src='{{ asset('img/no_image_available.svg')}}'
+                       {% endif %}
+                     alt="Card image cap" />
+                <div class="card-body">
+                    <h4 class="card-title"><a href='{{site.url}}' target='_blank' title='{{site.description|length > 50 ? (site.description[:50]|striptags ~ '…') : site.description|striptags }}'>{{site.name}}</a> </h4>
+                    <p class="card-text">{{site.description|length > 150 ? (site.description[:150]|striptags ~ '…') : site.description|striptags }}</p>
+                    <a href="{{ path('_website', {'id': site.id}) }}" class="btn btn-primary">+ {{'more'|trans}}</a>
+                </div>
+            </div>
+        {% endfor %}          
 
-        {% for site in webSites%}      
-            {% if loop.index is divisible by(2) or  loop.first %}
-            </div> <div class='row'> 
-                <div class='col'>
-                    <div class='row'>
-                        {% if site.image is not empty %}
-                            <div class='col'><img width='150px;' src='{{site.image}}' alt='thumb {{site.name}}' class="img-thumbnail img-fluid " /></div>
-                            {% else %}
-                            <div class='col'><img width='150px;' src='{{ asset('img/no_image_available.svg')}}' alt='default thumb' class="img-thumbnail img-fluid " /></div>
-                            {% endif %}
-                        <div class='col'>
-                            <a href='{{site.url}}' target='_blank' title='{{site.description|length > 50 ? (site.description[:50] ~ '…') : site.description }}'>{{site.name}}</a> 
-                            <p>{{site.description|length > 150 ? (site.description[:150] ~ '…') : site.description }}</p>
-                        </div>
-                    </div>
-                </div>
-            {% else %}
-                <div class='col'>
-                    <div class='row'>
-                        {% if site.image is not empty %}
-                            <div class='col'><img width='150px;' src='{{site.image}}' alt='thumb {{site.name}}' class="img-thumbnail img-fluid " /></div>
-                            {% else %}
-                            <div class='col'><img width='150px;' src='{{ asset('img/no_image_available.svg')}}' alt='default thumb' class="img-thumbnail img-fluid " /></div>
-                            {% endif %}
-                        <div class='col'>
-                            <a href='{{site.url}}' target='_blank' title='{{site.description|length > 50 ? (site.description[:50] ~ '…') : site.description }}'>{{site.name}}</a> 
-                            <p>{{site.description|length > 150 ? (site.description[:150] ~ '…') : site.description }}</p>
-                        </div>
-                    </div>
-                </div>
-            {% endif %}
-        {% endfor %}   
+      
     </div>    
 {% else %}
 
