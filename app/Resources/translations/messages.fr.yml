@@ -19,4 +19,11 @@ home.description: 'Frannuaire-gratuit.com est un annuaire généraliste gratuit.
 more: 'd''informations sur ce site'
 Comments: Commentaires
 rss: RSS
-commentof: Commentaire du 
+commentof: 'Commentaire du'
+suscription.basic: Inscription Basique
+name: Nom
+url: Url
+description: Description
+email: E-mail
+email.confirm: Confirmer votre e-mail
+save: Inscrire mon site

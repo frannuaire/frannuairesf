@@ -14,10 +14,9 @@ class Link
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="uid", type="integer", nullable=false)
+     * @ORM\Column(name="uid", type="integer", nullable=false )
      */
-    private $uid;
+    private $uid = 0;
 
     /**
      * @var string
@@ -108,7 +107,7 @@ class Link
      *
      * @ORM\Column(name="date", type="date", nullable=false)
      */
-    private $date;
+    private $date ;
 
     /**
      * @var integer
@@ -170,8 +169,8 @@ class Link
         return $this->email;
     }
 
-    function getDate(): \DateTime {
-        return $this->date;
+    function getDate(): \DateTime {    
+        return ($this->date)??new \DateTime();
     }
 
     function getId() {

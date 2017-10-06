@@ -24,8 +24,8 @@
                      alt="Card image cap" />
                 <div class="card-body">
                     <h4 class="card-title"><a href='{{site.url}}' target='_blank' title='{{site.description|length > 50 ? (site.description[:50]|striptags ~ '…') : site.description|striptags }}'>{{site.name}}</a> </h4>
-                    <p class="card-text">{{site.description|length > 150 ? (site.description[:150]|striptags ~ '…') : site.description|striptags }}</p>
-                    <a href="{{ path('_website', {'id': site.id}) }}" class="btn btn-primary">+ {{'more'|trans}}</a>
+                    <p class="card-text" style='margin-bottom: 30px;'>{{site.description|length > 150 ? (site.description[:150]|striptags ~ '…') : site.description|striptags }}</p>
+                    <a href="{{ path('_website', {'id': site.id}) }}" class="btn btn-primary" style='position:absolute;bottom:5px;'>+ {{'more'|trans}}</a>
                 </div>
             </div>
         {% endfor %}          
