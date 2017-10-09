@@ -29,7 +29,11 @@ security:
             logout:
                 path: logout
                 target: login 
-                
+
+    access_control:
+        # require ROLE_ADMIN for /admin*
+        - { path: ^/admin*, roles: ROLE_ADMIN }
+        - { path: ^/member*, roles: [ROLE_USER, ROLE_ADMIN] }
             # activate different ways to authenticate
 
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate

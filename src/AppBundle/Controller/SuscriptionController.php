@@ -17,6 +17,7 @@ use \Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use \Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use \Symfony\Component\Validator\Constraints\DateTime;
+use Symfony\Component\Form\FormError;
 
 class SuscriptionController extends Controller {
 
@@ -36,14 +37,15 @@ class SuscriptionController extends Controller {
                 ->add('category', ChoiceType::class, array(
                     'choices' => $this->getCategory(),
                     'attr' => array('class' => 'form-control'),
+                    'required' => true,
                 ))
                 ->add('name', TextType::class, array(
                     'label' => $this->get('translator')->trans('name'),
-                    'attr' => array('class' => 'form-control')
+                    'attr' => array('class' => 'form-control', 'placeholder' => $this->get('translator')->trans('title.placeholder'))
                 ))
                 ->add('url', UrlType::class, array(
                     'label' => $this->get('translator')->trans('url'),
-                    'attr' => array('class' => 'form-control')
+                    'attr' => array('class' => 'form-control', 'placeholder' => $this->get('translator')->trans('url.placeholder'))
                 ))
                 ->add('description', TextareaType::class, array(
                     'label' => $this->get('translator')->trans('description'),
@@ -56,6 +58,14 @@ class SuscriptionController extends Controller {
                     'required' => true,
                     'first_options' => array('label' => $this->get('translator')->trans('email')),
                     'second_options' => array('label' => $this->get('translator')->trans('email.confirm')),
+                ))
+                ->add('image', UrlType::class, array(
+                    'label' => $this->get('translator')->trans('image'),
+                    'attr' => array('class' => 'form-control',
+                        'placeholder' => $this->get('translator')->trans('image.placeholder'),
+                        'title' => $this->get('translator')->trans('image.placeholder')
+                    ),
+                    'required' => false,
                 ))
                 ->add('date', DateTimeType::class, [
                     'label' => ' ',
@@ -72,16 +82,7 @@ class SuscriptionController extends Controller {
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // $form->getData() holds the submitted values
-            // but, the original `$task` variable has also been updated
-            $link = $form->getData();
-            $link->setState(1); // Attente de validation
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($link);
-            $em->flush();
-
-            return $this->redirectToRoute('homepage');
+            $this->validForm($form);
         }
 
         return $this->render('suscription/basic.html.twig', array(
@@ -89,20 +90,38 @@ class SuscriptionController extends Controller {
         ));
     }
 
-    private function getCategory() {
+    private function validForm($form) {
+        $link = $form->getData();
+        if (strlen($link->getDescription() < 1500)) {
+            $form->addError(new FormError($this->get('translator')->trans('description.min')));
+            return $this->render('suscription/basic.html.twig', array(
+                        'form' => $form->createView(),
+            ));
+        }
+        $link->setState(1); // Attente de validation
 
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($link);
+        $em->flush();
+
+        return $this->redirectToRoute('homepage');
+    }
+
+    /**
+     * get Categories for ChoiceType
+     * @return Array
+     */
+    private function getCategory() {
         $cat = $this->getDoctrine()
                 ->getRepository(Category::class)
                 ->findAll();
-      //    die(var_dump($cat));
 
         $catUnit = array();
         foreach ($cat as $bu) {
-           // array_push($catUnit, $bu->getName() );
-            $catUnit[] =  array($bu->getId(), $bu->getName()); 
+            $catUnit[$bu->getName()] = $bu->getId();
         }
 
-        return $cat;
+        return $catUnit;
     }
 
 }

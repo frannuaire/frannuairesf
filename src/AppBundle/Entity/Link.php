@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * 99q5Link
@@ -10,8 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="99q5_link")
  * @ORM\Entity
  */
-class Link
-{
+class Link {
+
     /**
      * @var integer
      * @ORM\Column(name="uid", type="integer", nullable=false )
@@ -36,6 +37,7 @@ class Link
      * @var string
      *
      * @ORM\Column(name="description", type="text", length=65535, nullable=false)
+     * 
      */
     private $description;
 
@@ -107,7 +109,7 @@ class Link
      *
      * @ORM\Column(name="date", type="date", nullable=false)
      */
-    private $date ;
+    private $date;
 
     /**
      * @var integer
@@ -117,6 +119,7 @@ class Link
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
     function getUid() {
         return $this->uid;
     }
@@ -169,8 +172,8 @@ class Link
         return $this->email;
     }
 
-    function getDate(): \DateTime {    
-        return ($this->date)??new \DateTime();
+    function getDate(): \DateTime {
+        return ($this->date) ?? new \DateTime();
     }
 
     function getId() {
@@ -206,7 +209,11 @@ class Link
     }
 
     function setImage($image) {
-        $this->image = $image;
+        if (is_null($image)) {
+            $this->image = '';
+        } else {
+            $this->image = $image;
+        }
     }
 
     function setHits($hits) {
@@ -237,7 +244,4 @@ class Link
         $this->id = $id;
     }
 
-
-
 }
-

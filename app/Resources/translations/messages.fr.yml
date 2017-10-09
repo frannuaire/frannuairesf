@@ -21,9 +21,13 @@ Comments: Commentaires
 rss: RSS
 commentof: 'Commentaire du'
 suscription.basic: Inscription Basique
-name: Nom
+name: Titre
 url: Url
-description: Description
+description: Description (1500 caractères min)
 email: E-mail
 email.confirm: Confirmer votre e-mail
 save: Inscrire mon site
+image.placeholder: 'il s''agit d''une image au format 120x90 qui illustrera votre site'
+title.placeholder: 'Sera utilisé comme ancre dans l''annuaire'
+url.placeholder: 'http://www.exemple.com'
+description.min: Vous devez saisir au minimum 1500 Caractères

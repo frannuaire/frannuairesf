@@ -121,7 +121,11 @@ class User implements UserInterface {
     }
 
     public function getRoles() {
-        return array('ROLE_USER');
+        if ($this->getIsadmin() == '1') {
+            return array('ROLE_ADMIN');
+        } else {
+            return array('ROLE_USER');
+        }
     }
 
     public function getSalt() {

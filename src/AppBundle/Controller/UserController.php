@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class UserController extends Controller
 {    /**
-     * @Route("/board", name="board")
+     * @Route("/member/board", name="board")
      *
      */
 
@@ -20,7 +20,7 @@ class UserController extends Controller
     $user  = $this->getUser()->getUsername();
    // die(var_dump($user));
         // replace this example code with whatever you need
-          return $this->render('user/board.html.twig', [
+          return $this->render('member/board.html.twig', [
             
         ]);
         
