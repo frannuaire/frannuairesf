@@ -22,7 +22,7 @@ use Symfony\Component\Form\FormError;
 class SuscriptionController extends Controller {
 
     /**
-     * @Route("/inscrption-basic", name="basic")
+     * @Route("/inscription-basic", name="basic")
      */
     public function basicAction(Request $request) {
 

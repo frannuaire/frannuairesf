@@ -31,3 +31,15 @@ image.placeholder: 'il s''agit d''une image au format 120x90 qui illustrera votr
 title.placeholder: 'Sera utilisé comme ancre dans l''annuaire'
 url.placeholder: 'http://www.exemple.com'
 description.min: Vous devez saisir au minimum 1500 Caractères
+homeadmin: 'Panneau d''aministration'
+admin.dashboard.title: Panneau de contrôle
+admin.link.tovalidate: Liens en attente
+admin.link.content: Contenu
+admin.link.findupdate: Rechercher ou modifier
+admin.link.check: Vérifier des liens
+admin.link.keywords: Mots clefs
+admin.link.configuration: Configuration
+admin.link.addon: Plug ins
+admin.link.other: Autres
+admin.link.disconnect: Déconnexion
+link.deleted: Lien supprimé avec succè
