@@ -18,14 +18,17 @@
 </div>
 <div class='row rowAdminBoarder'> 
     <div class="col">
-        <img class="icon" src="{{ asset('img/Entypo+/link.svg') }}" alt="infinity">
-        <br />
-        {{ 'admin.link.check'|trans}}
+        <a href="{{path('checkonline')}}" class='linkAdmin'>
+            <img class="icon" src="{{ asset('img/Entypo+/link.svg') }}" alt="infinity">
+            <br />
+            {{ 'admin.link.check'|trans}}</a>
     </div>
     <div class="col">
-        <img class="icon" src="{{ asset('img/Entypo+/edit.svg') }}" alt="Edit pictogram">
-        <br />
-        {{ 'admin.link.keywords'|trans}}
+        <a href="{{path('keywords')}}" class='linkAdmin'>
+            <img class="icon" src="{{ asset('img/Entypo+/edit.svg') }}" alt="Edit pictogram">
+            <br />
+            {{ 'admin.link.keywords'|trans}}
+        </a>
     </div>
     <div class="col">
         <img class="icon" src="{{ asset('img/Entypo+/tools.svg') }}" alt="tools pictogram">

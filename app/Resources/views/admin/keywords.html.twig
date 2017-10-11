@@ -1,0 +1,39 @@
+{% extends 'bootstrap.html.twig' %}
+
+{% block body %}
+    <header class='header'>
+        <div class="container text-center" >
+            <h1 class="text-center">{{'admin.link.tovalidate'|trans}}</h1><hr class="text-center"/>
+            {% include 'admin/adminpannel.html.twig' %}
+            {% if message is defined and message is not empty  %}
+                <div class='row'> 
+                    <div class="alert alert-success" role="alert">
+                        {{message}}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </header>
+
+    <div class="container adminBoarder">
+        <div class='row headBoard'>
+            <div class='col-lg-6'>{{'keyword.word'|trans}}</div>
+            <div class='col-lg-2'>{{'keyword.date'|trans}}</div>
+            <div class='col-lg-2'>{{'keyword.occurence'}}</div>
+            <div class='col-lg-2'>{{'keyword.hasresults'|trans}}</div>
+        </div>
+        {% for keyword in keywords %}
+            <div class='row rowAdminBoarder' style='color:#fff;'>
+
+                <div class='col-lg-6'>{{keyword.word}}</div>
+                <div class='col-lg-2'>{{keyword.date|date('d/m/Y')}}</div>
+                <div class='col-lg-2'>{{keyword.occurence}}</div>
+                <div class='col-lg-2'>{{keyword.hasresults}}</div>
+            </div>
+        {% endfor %}     
+
+    </div>  
+</div>
+
+
+{% endblock %}

@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="99q5_keyword")
  * @ORM\Entity
  */
-class 99q5Keyword
+class Keyword
 {
     /**
      * @var string
@@ -48,6 +48,46 @@ class 99q5Keyword
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
+    function getWord() {
+        return $this->word;
+    }
+
+    function getOccurence() {
+        return $this->occurence;
+    }
+
+    function getDate(): \DateTime {
+        return $this->date;
+    }
+
+    function getHasresults() {
+        return $this->hasresults;
+    }
+
+    function getId() {
+        return $this->id;
+    }
+
+    function setWord($word) {
+        $this->word = $word;
+    }
+
+    function setOccurence($occurence) {
+        $this->occurence = $occurence;
+    }
+
+    function setDate(\DateTime $date) {
+        $this->date = $date;
+    }
+
+    function setHasresults($hasresults) {
+        $this->hasresults = $hasresults;
+    }
+
+    function setId($id) {
+        $this->id = $id;
+    }
 
 
 }

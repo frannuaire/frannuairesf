@@ -7,6 +7,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use AppBundle\Entity\Link;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class AdminController extends Controller {
 
@@ -14,11 +17,10 @@ class AdminController extends Controller {
      * @Route("/admin", name="homeadmin")
      */
     public function indexAction(Request $request) {
-        // get website category
+
         $websites = $this->getDoctrine()
-                ->getRepository(\AppBundle\Entity\Link::class)
+                ->getRepository(Link::class)
                 ->findBy(array('state' => '4'), array('date' => 'desc', 'prio' => 'desc'), 4);
-        // replace this example code with whatever you need
         return $this->render('admin/index.html.twig', [
                     'webSites' => $websites,
         ]);
@@ -28,11 +30,10 @@ class AdminController extends Controller {
      * @Route("/admin/validate/{message}", name="validate")
      */
     public function validateAction(Request $request, $message = '') {
-        // get website category
         $websites = $this->getDoctrine()
-                ->getRepository(\AppBundle\Entity\Link::class)
+                ->getRepository(Link::class)
                 ->findBy(array('state' => '1'), array('prio' => 'desc', 'date' => 'desc', 'uid' => 'desc'));
-        // replace this example code with whatever you need
+
         return $this->render('admin/validate.html.twig', [
                     'webSites' => $websites,
                     'message' => $message,
@@ -43,11 +44,10 @@ class AdminController extends Controller {
      * @Route("/admin/isvalid", name="isvalid")
      */
     public function isvalidatAction(Request $request) {
-        // get website category
         $websites = $this->getDoctrine()
-                ->getRepository(\AppBundle\Entity\Link::class)
+                ->getRepository(Link::class)
                 ->findBy(array('state' => '1'), array('date' => 'desc', 'uid' => 'desc'));
-        // replace this example code with whatever you need
+
         return $this->render('admin/validate.html.twig', [
                     'webSites' => $websites,
                     'message' => "",
@@ -55,11 +55,10 @@ class AdminController extends Controller {
     }
 
     /**
+     * Remove Link
      * @Route("/admin/refuse/{id}", name="refuse")
      */
     public function refuseAction($id) {
-    
-
         $em = $this->getDoctrine()->getEntityManager();
         $websites = $em->getReference('AppBundle:Link', $id);
         if (!$websites) {
@@ -68,9 +67,70 @@ class AdminController extends Controller {
 
         $em->remove($websites);
         $em->flush();
-        // replace this example code with whatever you need
-        return $this->redirectToRoute('validate', array('message'=>$this->get('translator')->trans('link.deleted')));
-        
+        return $this->redirectToRoute('validate', array('message' => $this->get('translator')->trans('link.deleted')));
+    }
+
+    /**
+     * @Route("/admin/checkonline", name="checkonline")
+     */
+    public function checkonlineAction(Request $request) {
+
+        $formBuilder = $this->createFormBuilder();
+        $formBuilder->add('check', SubmitType::class);
+        $form = $formBuilder->getForm();
+
+        $websitesKO = $this->getDoctrine()
+                ->getRepository(Link::class)
+                ->findBy(array('state' => '3'), array('prio' => 'desc', 'date' => 'desc', 'uid' => 'desc'));
+        if ($request->getMethod() == 'POST') {
+            $this->checkIt();
+        }
+        return $this->render('admin/checkonline.html.twig', [
+                    'webSites' => $websitesKO,
+                    'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * check if the link is down and update state to 3 down
+     * @return Render
+     */
+    public function checkIt() {
+
+        $websitesToCheck = $this->getDoctrine()
+                ->getRepository(Link::class)
+                ->findBy(array('state' => '1'), array('prio' => 'desc', 'date' => 'desc', 'uid' => 'desc'), 500);
+        set_time_limit(600);
+        foreach ($websitesToCheck as $link) {
+            if (!$this->url_test($link->getUrl())) {
+                $em = $this->getDoctrine()->getManager();
+                $link->setState('3');
+                $em->persist($link);
+                $em->flush();
+            }
+        }
+    }
+
+    /**
+     * 
+     * @param type $url
+     * @return boolean
+     */
+    public function url_test($url) {
+        $timeout = 10;
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
+        $http_respond = curl_exec($ch);
+        $http_respond = trim(strip_tags($http_respond));
+        $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+        if (( $http_code == "200" ) || ( $http_code == "302" ) || ( $http_code == "301" )) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

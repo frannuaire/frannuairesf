@@ -1,0 +1,52 @@
+{% extends 'bootstrap.html.twig' %}
+
+{% block body %}
+    <header class='header'>
+        <div class="container text-center" >
+            <h1 class="text-center">{{'admin.link.tovalidate'|trans}}</h1><hr class="text-center"/>
+            {% include 'admin/adminpannel.html.twig' %}
+            {% if message is defined and message is not empty  %}
+                <div class='row'> 
+                    <div class="alert alert-success" role="alert">
+                        {{message}}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </header>
+
+    <div class="container adminBoarder">
+        <div class='row rowAdminBoarder'>
+            {{ form_start(form) }}
+            {{ form_errors(form) }}
+            <div class="form-group">
+                {{ form_row(form.check) }}
+            </div>
+
+            {{ form_end(form) }}
+        </div>
+        <div class='row rowAdminBoarder'>
+            {% for site in webSites%}
+                {% if site.prio %}
+                    <div class='row rowAdminBoarder premium'> 
+                    {% else %}       
+                        <div class='row rowAdminBoarder '>
+                        {% endif %}   
+
+                        <div class='col-lg-2'><a href='admin/isvalide/{{site.id}}' class='btn btn-primary '>{{'validate'}}</a>
+                            <a href="{{ path('refuse', {'id': site.id})}}" class='btn btn-warning '>{{'refuse'}}</a>
+                            {% if site.prio %}
+                                <img class="icon" src="{{ asset('img/Entypo+/star.svg') }}" alt="Star pictogram" title='premium member'>    
+                            {% endif %}
+                        </div>
+                        <div class='col-lg-2'>{{site.name}} - <a href='{{site.url}}'>{{site.url}}</a></div>
+                        <div class='col-lg-8'>{{site.description}}</div>
+                    </div>
+                {% endfor %}    
+            </div>
+        </div>
+
+
+
+
+    {% endblock %}
