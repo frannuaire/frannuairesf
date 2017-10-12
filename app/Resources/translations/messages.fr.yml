@@ -43,3 +43,4 @@ admin.link.addon: Plug ins
 admin.link.other: Autres
 admin.link.disconnect: Déconnexion
 link.deleted: Lien supprimé avec succè
+search.h2: 'Votre recherche pour <strong class=''keyword''>%keys%</strong> contient <strong class=''keyword''>%nbRes%</strong> Résultat(s)'

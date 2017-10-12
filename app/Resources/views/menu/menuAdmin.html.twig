@@ -19,8 +19,8 @@
                 <a class="nav-link" href="{{ path('logout') }}">{{'Logout'|trans}}</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="{{'search'|trans}}" aria-label="{{'search'|trans}}">
+        <form class="form-inline my-2 my-lg-0" name='search' action="{{path('search')}}">
+            <input class="form-control mr-sm-2" name='keywords' id='keywords' type="text" placeholder="{{'search'|trans}}" aria-label="{{'search'|trans}}">
             <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">{{'search'|trans}}</button>
         </form>
     </div>
