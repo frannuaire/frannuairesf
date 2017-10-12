@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="99q5_inlog")
  * @ORM\Entity
  */
-class 99q5Inlog
+class Inlog
 {
     /**
      * @var \DateTime
@@ -36,6 +36,30 @@ class 99q5Inlog
      * @ORM\GeneratedValue(strategy="NONE")
      */
     private $uid;
+    function getDate(): \DateTime {
+        return $this->date;
+    }
+
+    function getIp() {
+        return $this->ip;
+    }
+
+    function getUid() {
+        return $this->uid;
+    }
+
+    function setDate(\DateTime $date) {
+        $this->date = $date;
+    }
+
+    function setIp($ip) {
+        $this->ip = $ip;
+    }
+
+    function setUid($uid) {
+        $this->uid = $uid;
+    }
+
 
 
 }

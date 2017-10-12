@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="99q5_iplog")
  * @ORM\Entity
  */
-class 99q5Iplog
+class Iplog
 {
     /**
      * @var boolean
@@ -50,6 +50,46 @@ class 99q5Iplog
      * @ORM\GeneratedValue(strategy="NONE")
      */
     private $linkid;
+
+    function getClic() {
+        return $this->clic;
+    }
+
+    function getVote() {
+        return $this->vote;
+    }
+
+    function getDate(): \DateTime {
+        return $this->date;
+    }
+
+    function getIp() {
+        return $this->ip;
+    }
+
+    function getLinkid() {
+        return $this->linkid;
+    }
+
+    function setClic($clic) {
+        $this->clic = $clic;
+    }
+
+    function setVote($vote) {
+        $this->vote = $vote;
+    }
+
+    function setDate(\DateTime $date) {
+        $this->date = $date;
+    }
+
+    function setIp($ip) {
+        $this->ip = $ip;
+    }
+
+    function setLinkid($linkid) {
+        $this->linkid = $linkid;
+    }
 
 
 }

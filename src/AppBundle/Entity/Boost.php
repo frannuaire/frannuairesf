@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="99q5_boost")
  * @ORM\Entity
  */
-class 99q5Boost
+class Boost
 {
     /**
      * @var \DateTime
@@ -34,6 +34,30 @@ class 99q5Boost
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+    function getDate(): \DateTime {
+        return $this->date;
+    }
+
+    function getIsAllopass() {
+        return $this->isAllopass;
+    }
+
+    function getId() {
+        return $this->id;
+    }
+
+    function setDate(\DateTime $date) {
+        $this->date = $date;
+    }
+
+    function setIsAllopass($isAllopass) {
+        $this->isAllopass = $isAllopass;
+    }
+
+    function setId($id) {
+        $this->id = $id;
+    }
+
 
 
 }

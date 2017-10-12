@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="AppBundle\Entity\99q5Boost" table="99q5_boost">
-    <id name="id" type="integer" column="id">
-      <generator strategy="IDENTITY"/>
-    </id>
-    <field name="date" type="datetime" column="date" nullable="false"/>
-    <field name="isAllopass" type="boolean" column="is_allopass" nullable="false">
+  <entity name="AppBundle\Entity\In" table="99q5_in">
+    <id name="uid" type="integer" column="uid"/>
+    <id name="date" type="date" column="date"/>
+    <field name="ins" type="integer" column="ins" nullable="false">
       <options>
-        <option name="default">1</option>
+        <option name="unsigned"/>
       </options>
     </field>
   </entity>

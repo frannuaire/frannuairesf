@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="AppBundle\Entity\99q5Inlog" table="99q5_inlog">
-    <id name="ip" type="string" column="ip" length="16"/>
-    <id name="uid" type="integer" column="uid"/>
-    <field name="date" type="date" column="date" nullable="false"/>
+  <entity name="AppBundle\Entity\Link2tag" table="99q5_link2tag">
+    <id name="lid" type="integer" column="lid"/>
+    <id name="tid" type="integer" column="tid"/>
   </entity>
 </doctrine-mapping>

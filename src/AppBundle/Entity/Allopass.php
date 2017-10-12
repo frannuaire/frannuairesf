@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="99q5_allopass")
  * @ORM\Entity
  */
-class 99q5Allopass
+class Allopass
 {
     /**
      * @var string
@@ -43,6 +43,38 @@ class 99q5Allopass
      * @ORM\GeneratedValue(strategy="NONE")
      */
     private $code;
+
+    function getAction() {
+        return $this->action;
+    }
+
+    function getDate() {
+        return $this->date;
+    }
+
+    function getIp() {
+        return $this->ip;
+    }
+
+    function getCode() {
+        return $this->code;
+    }
+
+    function setAction($action) {
+        $this->action = $action;
+    }
+
+    function setDate($date) {
+        $this->date = $date;
+    }
+
+    function setIp($ip) {
+        $this->ip = $ip;
+    }
+
+    function setCode($code) {
+        $this->code = $code;
+    }
 
 
 }

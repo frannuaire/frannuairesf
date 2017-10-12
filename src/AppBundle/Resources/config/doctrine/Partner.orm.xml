@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="AppBundle\Entity\99q5Partner" table="99q5_partner">
+  <entity name="AppBundle\Entity\Partner" table="99q5_partner">
     <id name="linkId" type="integer" column="link_id">
       <generator strategy="IDENTITY"/>
     </id>

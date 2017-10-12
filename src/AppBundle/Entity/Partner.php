@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="99q5_partner")
  * @ORM\Entity
  */
-class 99q5Partner
+class Partner
 {
     /**
      * @var string
@@ -62,6 +62,62 @@ class 99q5Partner
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $linkId;
+
+    function getHref() {
+        return $this->href;
+    }
+
+    function getLabel() {
+        return $this->label;
+    }
+
+    function getTitle() {
+        return $this->title;
+    }
+
+    function getLang() {
+        return $this->lang;
+    }
+
+    function getRel() {
+        return $this->rel;
+    }
+
+    function getPosition() {
+        return $this->position;
+    }
+
+    function getLinkId() {
+        return $this->linkId;
+    }
+
+    function setHref($href) {
+        $this->href = $href;
+    }
+
+    function setLabel($label) {
+        $this->label = $label;
+    }
+
+    function setTitle($title) {
+        $this->title = $title;
+    }
+
+    function setLang($lang) {
+        $this->lang = $lang;
+    }
+
+    function setRel($rel) {
+        $this->rel = $rel;
+    }
+
+    function setPosition($position) {
+        $this->position = $position;
+    }
+
+    function setLinkId($linkId) {
+        $this->linkId = $linkId;
+    }
 
 
 }

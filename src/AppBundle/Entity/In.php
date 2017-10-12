@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="99q5_in")
  * @ORM\Entity
  */
-class 99q5In
+class In
 {
     /**
      * @var integer
@@ -36,6 +36,30 @@ class 99q5In
      * @ORM\GeneratedValue(strategy="NONE")
      */
     private $date;
+
+    function getIns() {
+        return $this->ins;
+    }
+
+    function getUid() {
+        return $this->uid;
+    }
+
+    function getDate(): \DateTime {
+        return $this->date;
+    }
+
+    function setIns($ins) {
+        $this->ins = $ins;
+    }
+
+    function setUid($uid) {
+        $this->uid = $uid;
+    }
+
+    function setDate(\DateTime $date) {
+        $this->date = $date;
+    }
 
 
 }

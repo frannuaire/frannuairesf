@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="99q5_validation")
  * @ORM\Entity
  */
-class 99q5Validation
+class Validation
 {
     /**
      * @var string
@@ -41,6 +41,39 @@ class 99q5Validation
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idSite;
+    
+    function getSecret() {
+        return $this->secret;
+    }
+
+    function getUrl() {
+        return $this->url;
+    }
+
+    function getEmail() {
+        return $this->email;
+    }
+
+    function getIdSite() {
+        return $this->idSite;
+    }
+
+    function setSecret($secret) {
+        $this->secret = $secret;
+    }
+
+    function setUrl($url) {
+        $this->url = $url;
+    }
+
+    function setEmail($email) {
+        $this->email = $email;
+    }
+
+    function setIdSite($idSite) {
+        $this->idSite = $idSite;
+    }
+
 
 
 }

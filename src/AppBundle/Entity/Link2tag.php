@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="99q5_link2tag")
  * @ORM\Entity
  */
-class 99q5Link2tag
+class Link2tag
 {
     /**
      * @var integer
@@ -29,6 +29,23 @@ class 99q5Link2tag
      * @ORM\GeneratedValue(strategy="NONE")
      */
     private $tid;
+    
+    function getLid() {
+        return $this->lid;
+    }
+
+    function getTid() {
+        return $this->tid;
+    }
+
+    function setLid($lid) {
+        $this->lid = $lid;
+    }
+
+    function setTid($tid) {
+        $this->tid = $tid;
+    }
+
 
 
 }

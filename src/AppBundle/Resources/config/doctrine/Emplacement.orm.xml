@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="AppBundle\Entity\99q5Pub" table="99q5_pub">
+  <entity name="AppBundle\Entity\Emplacement" table="99q5_emplacement">
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
@@ -9,14 +9,14 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="idEmp" type="integer" column="id_emp" nullable="false">
+    <field name="width" type="integer" column="width" nullable="false">
       <options>
         <option name="unsigned"/>
       </options>
     </field>
-    <field name="code" type="text" column="code" length="65535" nullable="false">
+    <field name="height" type="integer" column="height" nullable="false">
       <options>
-        <option name="fixed"/>
+        <option name="unsigned"/>
       </options>
     </field>
   </entity>

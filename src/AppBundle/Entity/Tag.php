@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="99q5_tag")
  * @ORM\Entity
  */
-class 99q5Tag
+class Tag
 {
     /**
      * @var integer
@@ -41,6 +41,38 @@ class 99q5Tag
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+    function getUid() {
+        return $this->uid;
+    }
+
+    function getTag() {
+        return $this->tag;
+    }
+
+    function getApproved() {
+        return $this->approved;
+    }
+
+    function getId() {
+        return $this->id;
+    }
+
+    function setUid($uid) {
+        $this->uid = $uid;
+    }
+
+    function setTag($tag) {
+        $this->tag = $tag;
+    }
+
+    function setApproved($approved) {
+        $this->approved = $approved;
+    }
+
+    function setId($id) {
+        $this->id = $id;
+    }
+
 
 
 }
