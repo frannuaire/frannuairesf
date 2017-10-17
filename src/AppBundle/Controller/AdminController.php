@@ -41,24 +41,37 @@ class AdminController extends Controller {
     }
 
     /**
-     * @Route("/admin/isvalid", name="isvalid")
+     * @Route("/admin/isvalid/{id}", name="isvalid")
      */
-    public function isvalidatAction(Request $request) {
+    public function isvalidatAction(Request $request, $id) {
+
+        $em = $this->getDoctrine()->getEntityManager();
+        $link = $em->getReference('AppBundle:Link', $id);
+        if (!$link) {
+            throw $this->createNotFoundException('No website found');
+        }
+        $link->setState('1');
+        $em->persist($link);
+        $em->flush();
+
         $websites = $this->getDoctrine()
                 ->getRepository(Link::class)
                 ->findBy(array('state' => '1'), array('date' => 'desc', 'uid' => 'desc'));
+// pour renvoyer au referer 
+        $referer = $request->headers->get('referer');
 
-        return $this->render('admin/validate.html.twig', [
+        return $this->redirect($referer);
+   /*     return $this->render('admin/validate.html.twig', [
                     'webSites' => $websites,
                     'message' => "",
-        ]);
+        ]);*/
     }
 
     /**
      * Remove Link
      * @Route("/admin/refuse/{id}", name="refuse")
      */
-    public function refuseAction($id) {
+    public function refuseAction(Request $request, $id) {
         $em = $this->getDoctrine()->getEntityManager();
         $websites = $em->getReference('AppBundle:Link', $id);
         if (!$websites) {
@@ -67,7 +80,10 @@ class AdminController extends Controller {
 
         $em->remove($websites);
         $em->flush();
-        return $this->redirectToRoute('validate', array('message' => $this->get('translator')->trans('link.deleted')));
+                $referer = $request->headers->get('referer');
+
+        return $this->redirect($referer);
+      //  return $this->redirectToRoute('validate', array('message' => $this->get('translator')->trans('link.deleted')));
     }
 
     /**
