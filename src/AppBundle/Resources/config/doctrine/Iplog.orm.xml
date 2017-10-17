@@ -14,8 +14,6 @@
       </options>
     </field>
     <field name="date" type="date" column="date" nullable="false">
-      <options>
-      </options>
     </field>
   </entity>
 </doctrine-mapping>

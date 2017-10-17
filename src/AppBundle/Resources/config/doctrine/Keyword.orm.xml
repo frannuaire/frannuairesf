@@ -16,9 +16,6 @@
       </options>
     </field>
     <field name="date" type="date" column="date" nullable="false">
-      <options>
-      
-      </options>
     </field>
     <field name="hasresults" type="boolean" column="hasresults" nullable="false">
       <options>
