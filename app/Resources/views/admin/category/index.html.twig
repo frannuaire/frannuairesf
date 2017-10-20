@@ -1,0 +1,23 @@
+{% extends 'bootstrap.html.twig' %}
+
+{% block body %}
+    <header class='header'>
+        <div class="container text-center" >
+            <h1 class="text-center">{{'admin.dashboard.title'|trans}}</h1><hr class="text-center"/>
+            {% include 'admin/adminpannel.html.twig' %}
+
+        </div>
+    </div>
+</header>
+
+<div class="container">
+            {% set vars = {'categories': categories} %}
+{% include 'admin/category/category.list.html.twig' with vars %}
+
+</div>  
+
+
+
+{% endblock %}
+
+

@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * 99q5Link
  *
  * @ORM\Table(name="99q5_link")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\LinkRepository")
  */
 class Link {
 

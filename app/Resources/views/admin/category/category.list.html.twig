@@ -1,0 +1,21 @@
+<div class='row rowAdminBoarder' style='color:#fff;'>
+    <div class='col'>{{'action'|trans}}</div>
+    <div class='col'>{{'category.name'|trans}}</div>
+    <div class='col'>{{'category.child'|trans}}</div>
+</div>
+{% for category in categories %}
+    <div class='row rowAdminBoarder' style='color:#fff;'>
+        <div class='col' >
+            <img  class="icon-small white" src="{{asset('img/Entypo+/new-message.svg')}}" alt="New message pictogram">
+            <img  class="icon-small trach" src="{{asset('img/Entypo+/trash.svg')}}" alt="Trash pictogram">
+        </div>
+        <div class='col'>{{category.name}}</div>
+        <div class='col'>
+            {% if(category.child>0) %}
+                <a href="{{ path('admin-category-list', {'id': category.id }) }}">{{'child'|trans}}</a>
+            {% else %}
+                &nbsp;
+            {% endif %}
+        </div>
+    </div>
+{% endfor %}     
