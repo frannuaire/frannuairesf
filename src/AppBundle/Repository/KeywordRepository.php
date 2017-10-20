@@ -12,11 +12,11 @@ use AppBundle\Entity\Keyword;
  */
 class KeywordRepository extends EntityRepository {
 
-    public function findAndUpdate($keywords,  $nbResult,  $emKey) {
+    public function findAndUpdate($keywords, $nbResult, $emKey) {
 
         $key = $this->findBy(array('word' => $keywords));
 
-   //     $emKey = $this->getManager();
+        //     $emKey = $this->getManager();
         if (count($key) > 0) {
             //   die(var_dump($key[0]->getOccurence()+1));
 
