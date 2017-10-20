@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * 99q5Keyword
  *
  * @ORM\Table(name="99q5_keyword")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\KeywordRepository")
  */
 class Keyword
 {

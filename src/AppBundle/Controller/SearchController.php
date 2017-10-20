@@ -45,33 +45,9 @@ class SearchController extends Controller {
             $nbResult = $this->getDoctrine()->getRepository(Link::class)->countLastResultElements();
             $keywords = preg_replace('/\%/', ' ', $keywords);
 
-            $key = $this->getDoctrine()->getRepository(Keyword::class)
-                    ->findBy(array('word' => $keywords));
-
             $emKey = $this->getDoctrine()->getManager();
-            if (count($key) > 0) {
-                //   die(var_dump($key[0]->getOccurence()+1));
+            $emKey = $this->getDoctrine()->getRepository(Keyword::class)->findAndUpdate($keywords, $nbResult, $emKey);
 
-                $key[0]->setOccurence($key[0]->getOccurence() + 1);
-                if ($nbResult > 0) {
-                    $key[0]->setHasResults(1);
-                }
-                $emKey->persist($key[0]);
-                $emKey->flush();
-            } else {
-                $key = new Keyword();
-                $key->setDate(new DateTime());
-                if ($nbResult > 0) {
-                    $key->setHasresults(1);
-                } else {
-                    $key->setHasresults(0);
-                }
-                $key->setOccurence(1);
-                $key->setWord($keywords);
-                $emKey->persist($key);
-                $emKey->flush();
-            }
-            // die(var_dump()));
             return $this->render('search/index.html.twig', [
                         'webSites' => $websites,
                         'keys' => $keywords,
