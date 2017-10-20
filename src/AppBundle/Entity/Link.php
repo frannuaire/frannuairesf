@@ -13,6 +13,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Link {
 
+     const HOME_ITEMS = 4;
+     const LIST_ITEMS = 8;
+     
     /**
      * @var integer
      * @ORM\Column(name="uid", type="integer", nullable=false )
