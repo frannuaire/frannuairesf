@@ -12,7 +12,10 @@
         <div class='col'>{{category.name}}</div>
         <div class='col'>
             {% if(category.child>0) %}
-                <a href="{{ path('admin-category-list', {'id': category.id }) }}">{{'child'|trans}}</a>
+                <a href="{{ path('admin-category-list', {'id': category.id }) }}" class="btn btn-primary">
+                    {{'child'|trans}} 
+                    <span class="badge badge-pill badge-dark">{{category.child}}</span>
+                </a>
             {% else %}
                 &nbsp;
             {% endif %}
