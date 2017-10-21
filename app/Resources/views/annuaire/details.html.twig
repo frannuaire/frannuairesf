@@ -46,30 +46,39 @@
 
     <!-- Collapse details -->
     <p>
-        <a class="btn btn-primary" data-toggle="collapse" href="#comments" aria-expanded="true" aria-controls="multiCollapseExample1">{{'Comments'|trans}}</a>
+        <a class="btn btn-primary " data-toggle="collapse" href="#comments" aria-expanded="true" aria-controls="multiCollapseExample1">{{'Comments'|trans}}&nbsp;<span class="badge badge-light">{{nbComments}}</span></a>
         <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#rss" aria-expanded="false" aria-controls="multiCollapseExample1">{{'rss'|trans}}</button>
         <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements</button>
     </p>
     <div class="row">
         <div class="col">
             <div class="collapse multi-collapse" id="comments">
-                <div class="card card-body">    
-                    {% for comment in comments %}
-                        <div class='row'>
-                            <p>{{'commentof'|trans}} <time datetime="{{comment.date|date('d/m/Y') }}">{{comment.date|date('d/m/Y') }}</time></p>
-                                    {{comment.message}}
-                        </div>
-                    {% endfor %}   
+                <div class="card card-body"> 
+                    {% if comments is empty %}
+                        {{'nocomments'|trans}}
+                    {% else %}
+                        {% for comment in comments %}
+                            <div class='row'>
+                                <p>{{'commentof'|trans}} <time datetime="{{comment.date|date('d/m/Y') }}">{{comment.date|date('d/m/Y') }}</time></p>
+                                        {{comment.message}}
+                            </div>
+                        {% endfor %} 
+
+                    {% endif %}
                 </div>
             </div>
         </div>
         <div class="col">
             <div class="collapse multi-collapse" id="rss">
-                <div class="card card-body">  
-                    {% for item in rss %}
-                        <a href='{{ item.link }}'> {{ item.title }}</a>
-                        {{ item.description|raw }}
-                    {% endfor %}
+                <div class="card card-body"> 
+                    {% if rss is empty %}
+                        {{'norss'|trans}}
+                    {% else %}
+                        {% for item in rss %}
+                            <a href='{{ item.link }}'> {{ item.title }}</a>
+                            {{ item.description|raw }}
+                        {% endfor %}
+                    {% endif %}
                 </div>
             </div>
         </div>

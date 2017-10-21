@@ -24,7 +24,7 @@ class AnnuaireController extends Controller {
         $cat = $this->getDoctrine()
                 ->getRepository(Category::class)
                 ->findBy(array('root' => 0));
-        // replace this example code with whatever you need
+        
         return $this->render('annuaire/listcategory.html.twig', [
                     'categories' => $cat,
         ]);
@@ -40,6 +40,8 @@ class AnnuaireController extends Controller {
         $comments = $this->getDoctrine()
                 ->getRepository(Comment::class)
                 ->findBy(array('lid' => $id));
+        $nbComments=count($comments);
+       
         $rss = $this->getDoctrine()
                 ->getRepository(Feed::class)
                 ->findBy(array('linkid' => $id));
@@ -60,13 +62,13 @@ class AnnuaireController extends Controller {
                      $sxe = null;
                 }
             }
-
-            return $this->render('annuaire/details.html.twig', [
+        }
+                    return $this->render('annuaire/details.html.twig', [
                         'webSites' => $site,
                         'comments' => $comments,
+                        'nbComments'=>$nbComments,
                         'rss' => $sxe,
             ]);
-        }
     }
 }    
     
