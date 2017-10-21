@@ -92,7 +92,7 @@ class SuscriptionController extends Controller {
 
     private function validForm($form) {
         $link = $form->getData();
-        if (strlen($link->getDescription() < 1500)) {
+        if (strlen($link->getDescription()) < 1500) {
             $form->addError(new FormError($this->get('translator')->trans('description.min')));
             return $this->render('suscription/basic.html.twig', array(
                         'form' => $form->createView(),
