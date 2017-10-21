@@ -30,7 +30,7 @@ class SearchController extends Controller {
     }
 
     /**
-     * @Route("/admin/search", name="search")
+     * @Route("/search", name="search")
      */
     public function searchAction(Request $request) {
         $param = explode('=', $request->getRequestUri());
