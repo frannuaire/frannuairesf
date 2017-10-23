@@ -26,7 +26,7 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="state" type="boolean" column="state" nullable="false">
+    <field name="state" type="integer" column="state" nullable="false">
       <options>
         <option name="default">0</option>
       </options>

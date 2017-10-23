@@ -32,7 +32,7 @@ class AdminController extends Controller {
     public function validateAction(Request $request, $message = '') {
         $websites = $this->getDoctrine()
                 ->getRepository(Link::class)
-                ->findBy(array('state' => '1'), array('prio' => 'desc', 'date' => 'desc', 'uid' => 'desc'));
+                ->findBy(array('state' => Link::STATE_PENDING), array('prio' => 'desc', 'date' => 'desc', 'uid' => 'desc'));
 
         return $this->render('admin/validate.html.twig', [
                     'webSites' => $websites,
@@ -56,7 +56,7 @@ class AdminController extends Controller {
 
         $websites = $this->getDoctrine()
                 ->getRepository(Link::class)
-                ->findBy(array('state' => '1'), array('date' => 'desc', 'uid' => 'desc'));
+                ->findBy(array('state' => Link::STATE_PENDING), array('date' => 'desc', 'uid' => 'desc'));
 // pour renvoyer au referer 
         $referer = $request->headers->get('referer');
 
@@ -97,7 +97,7 @@ class AdminController extends Controller {
 
         $websitesKO = $this->getDoctrine()
                 ->getRepository(Link::class)
-                ->findBy(array('state' => '3'), array('prio' => 'desc', 'date' => 'desc', 'uid' => 'desc'));
+                ->findBy(array('state' => Link::STATE_TROUBLE), array('prio' => 'desc', 'date' => 'desc', 'uid' => 'desc'));
         if ($request->getMethod() == 'POST') {
             $this->checkIt();
         }

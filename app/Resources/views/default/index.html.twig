@@ -7,6 +7,11 @@
             <div class='row'> 
 
                 <p class="text-center">{{'home.description'|trans}}</p>
+                {% for message in app.flashes('notice') %}
+                    <div class="flash-notice">
+                        <h2 class='info'>{{ message }}</h2>
+                    </div>
+                {% endfor %}
             </div>
             <div class='row'><script async 
                 src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>

@@ -54,7 +54,8 @@ class CategoryController extends Controller {
         // get website category
         $websites = $this->getDoctrine()
                 ->getRepository(Link::class)
-                ->findBy(array('category' => $id, 'state' => 4), array('date' => 'desc', 'prio' => 'desc'), Link::LIST_ITEMS);
+                ->findBy(array('category' => $id, 'state' => Link::STATE_VALID), array('date' => 'desc', 'prio' => 'desc'), Link::LIST_ITEMS);
+
 
         return $this->render('annuaire/category.html.twig', [
                     'categories' => $cat,

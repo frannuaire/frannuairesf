@@ -13,8 +13,14 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Link {
 
-     const HOME_ITEMS = 4;
-     const LIST_ITEMS = 8;
+    const HOME_ITEMS = 4;
+    const LIST_ITEMS = 8;
+     
+    const STATE_PENDING = 1; // All link you need to valid or refused
+    const STATE_BANNED = 2; // URL BANNED
+    const STATE_TROUBLE = 3; // if is there some trouble with http statu when you check it 
+    const STATE_VALID = 4; // All Valid Links
+    
      
     /**
      * @var integer
@@ -45,9 +51,9 @@ class Link {
     private $description;
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="state", type="boolean", nullable=false)
+     * @ORM\Column(name="state", type="integer", nullable=false)
      */
     private $state = '0';
 

@@ -83,6 +83,11 @@ class SuscriptionController extends Controller {
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->validForm($form);
+                 $this->addFlash(
+            'notice',
+            'Your link were saved!'
+        );
+            return $this->redirectToRoute('homepage');
         }
 
         return $this->render('suscription/basic.html.twig', array(
@@ -98,7 +103,7 @@ class SuscriptionController extends Controller {
                         'form' => $form->createView(),
             ));
         }
-        $link->setState(1); // Attente de validation
+        $link->setState(Link::STATE_PENDING); // Attente de validation
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($link);
