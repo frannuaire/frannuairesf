@@ -46,14 +46,16 @@
     </div>
     <div class="col">
         <a href="{{path('banned')}}" class='linkAdmin'>
-            <img class="icon" src="{{ asset('img/Entypo+/light-bulb.svg') }}" alt="Light bulb pictogram">
+            <img class="icon" src="{{ asset('img/Entypo+/block.svg') }}" alt="Light bulb pictogram">
             <br />
             {{ 'admin.link.banned'|trans}}
         </a>
     </div>
     <div class="col">
+         <a href="{{ path('logout') }}" class='linkAdmin'>
         <img class="icon" src="{{ asset('img/Entypo+/log-out.svg') }}" alt="disconnect">
         <br />
-        {{ 'admin.link.disconnect'|trans}}
+        {{'Logout'|trans}}
+        </a>
     </div>
 </div>
