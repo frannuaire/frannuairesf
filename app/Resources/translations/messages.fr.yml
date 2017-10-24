@@ -20,27 +20,39 @@ more: 'd''informations sur ce site'
 Comments: Commentaires
 rss: RSS
 commentof: 'Commentaire du'
-suscription.basic: Inscription Basique
+suscription.basic: 'Inscription Basique'
 name: Titre
 url: Url
-description: Description (1500 caractères min)
+description: 'Description (1500 caractères min)'
 email: E-mail
-email.confirm: Confirmer votre e-mail
-save: Inscrire mon site
+email.confirm: 'Confirmer votre e-mail'
+save: 'Inscrire mon site'
 image.placeholder: 'il s''agit d''une image au format 120x90 qui illustrera votre site'
 title.placeholder: 'Sera utilisé comme ancre dans l''annuaire'
 url.placeholder: 'http://www.exemple.com'
-description.min: Vous devez saisir au minimum 1500 Caractères
+description.min: 'Vous devez saisir au minimum 1500 Caractères'
 homeadmin: 'Panneau d''aministration'
-admin.dashboard.title: Panneau de contrôle
-admin.link.tovalidate: Liens en attente
+admin.dashboard.title: 'Panneau de contrôle'
+admin.link.tovalidate: 'Liens en attente'
 admin.link.content: Contenu
-admin.link.findupdate: Rechercher ou modifier
-admin.link.check: Vérifier des liens
-admin.link.keywords: Mots clefs
+admin.link.findupdate: 'Rechercher ou modifier'
+admin.link.check: 'Vérifier des liens'
+admin.link.keywords: 'Mots clefs'
 admin.link.configuration: Configuration
-admin.link.addon: Plug ins
+admin.link.addon: 'Plug ins'
 admin.link.other: Autres
 admin.link.disconnect: Déconnexion
-link.deleted: Lien supprimé avec succè
+link.deleted: 'Lien supprimé avec succè'
 search.h2: 'Votre recherche pour <strong class=''keyword''>%keys%</strong> contient <strong class=''keyword''>%nbRes%</strong> Résultat(s)'
+admin.link.banned: Sites Bannis 
+action: Action
+category.name: Catégorie
+category.child: Sous catégorie
+child: Enfant
+keyword.word: Mots clefs
+keyword.date: Date
+keyword.hasresults: __keyword.hasresults
+site.action: Action
+site.description: Description
+nocomments: Pas de commentaire pour le moment
+norss: Pas de flux RSS

@@ -6,11 +6,11 @@
         </a>
     </div>
     <div class="col">
-         <a href="{{path('admin-category-list')}}" class='linkAdmin'>
-        <img class="icon" src="{{ asset('img/Entypo+/feather.svg') }}" alt="Feather pictogram">
-        <br />
-        {{ 'admin.link.content'|trans}}
-         </a>
+        <a href="{{path('admin-category-list')}}" class='linkAdmin'>
+            <img class="icon" src="{{ asset('img/Entypo+/feather.svg') }}" alt="Feather pictogram">
+            <br />
+            {{ 'admin.link.content'|trans}}
+        </a>
     </div>
     <div class="col">
         <img class="icon" src="{{ asset('img/Entypo+/funnel.svg') }}" alt="Funnel pictogram">
@@ -45,9 +45,11 @@
         {{ 'admin.link.addon'|trans}}
     </div>
     <div class="col">
-        <img class="icon" src="{{ asset('img/Entypo+/light-bulb.svg') }}" alt="Light bulb pictogram">
-        <br />
-        {{ 'admin.link.other'|trans}}
+        <a href="{{path('banned')}}" class='linkAdmin'>
+            <img class="icon" src="{{ asset('img/Entypo+/light-bulb.svg') }}" alt="Light bulb pictogram">
+            <br />
+            {{ 'admin.link.banned'|trans}}
+        </a>
     </div>
     <div class="col">
         <img class="icon" src="{{ asset('img/Entypo+/log-out.svg') }}" alt="disconnect">

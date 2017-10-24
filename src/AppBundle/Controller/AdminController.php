@@ -20,7 +20,7 @@ class AdminController extends Controller {
 
         $websites = $this->getDoctrine()
                 ->getRepository(Link::class)
-                ->findBy(array('state' => '4'), array('date' => 'desc', 'prio' => 'desc'), 4);
+                ->findBy(array('state' => Link::STATE_VALID), array('date' => 'desc', 'prio' => 'desc'), 4);
         return $this->render('admin/index.html.twig', [
                     'webSites' => $websites,
         ]);
@@ -50,7 +50,7 @@ class AdminController extends Controller {
         if (!$link) {
             throw $this->createNotFoundException('No website found');
         }
-        $link->setState('1');
+        $link->setState(Link::STATE_PENDING);
         $em->persist($link);
         $em->flush();
 
@@ -115,7 +115,7 @@ class AdminController extends Controller {
 
         $websitesToCheck = $this->getDoctrine()
                 ->getRepository(Link::class)
-                ->findBy(array('state' => '1'), array('prio' => 'desc', 'date' => 'desc', 'uid' => 'desc'), 500);
+                ->findBy(array('state' => Link::STATE_PENDING), array('prio' => 'desc', 'date' => 'desc', 'uid' => 'desc'), 500);
         set_time_limit(600);
         foreach ($websitesToCheck as $link) {
             if (!$this->url_test($link->getUrl())) {

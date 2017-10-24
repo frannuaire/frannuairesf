@@ -16,7 +16,7 @@ class DefaultController extends Controller {
         // get website category
         $websites = $this->getDoctrine()
                 ->getRepository(Link::class)
-                ->findBy(array('state' => '4'), array('date' => 'desc', 'prio' => 'desc'), Link::HOME_ITEMS);
+                ->findBy(array('state' => Link::STATE_VALID), array('date' => 'desc', 'prio' => 'desc'), Link::HOME_ITEMS);
 
         return $this->render('default/index.html.twig', [
                     'webSites' => $websites,
