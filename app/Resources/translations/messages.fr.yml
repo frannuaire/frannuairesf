@@ -44,15 +44,18 @@ admin.link.other: Autres
 admin.link.disconnect: Déconnexion
 link.deleted: 'Lien supprimé avec succè'
 search.h2: 'Votre recherche pour <strong class=''keyword''>%keys%</strong> contient <strong class=''keyword''>%nbRes%</strong> Résultat(s)'
-admin.link.banned: Sites Bannis 
+admin.link.banned: 'Sites Bannis'
 action: Action
 category.name: Catégorie
-category.child: Sous catégorie
+category.child: 'Sous catégorie'
 child: Enfant
-keyword.word: Mots clefs
+keyword.word: 'Mots clefs'
 keyword.date: Date
 keyword.hasresults: __keyword.hasresults
 site.action: Action
 site.description: Description
-nocomments: Pas de commentaire pour le moment
-norss: Pas de flux RSS
+nocomments: 'Pas de commentaire pour le moment'
+norss: 'Pas de flux RSS'
+category.delete.confirm: 'Etes vous sure de vouloir supprimer cet élément?'
+category.deleted: 'Categorie supprimé.'
+message.flash: Information : 

@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Category;
 use AppBundle\Entity\Link;
 use AppBundle\Entity\Categorytext;
-
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -71,32 +70,43 @@ class CategoryController extends Controller {
                     'webSites' => $websites,
         ]);
     }
-    
-      /**
+
+    /**
+     * @Route("/admin/category-delete/{id}", name="admin-category-delete")
+     */
+    public function adminCategoryDeleteAction(Request $request, $id = 0) {
+        $categories = $this->getDoctrine()
+                ->getRepository(Category::class)
+                ->findOneBy(array('id' => $id));
+
+        if (null !== $categories) {
+
+            $this->addFlash(
+                    'notice', $this->get('translator')->trans('category.deleted')
+            );
+        }
+        return $this->redirectToRoute('admin-category-list');
+    }
+
+    /**
      * @Route("/admin/category-update/{id}", name="admin-category-update")
      */
     public function adminCategotyUpdateAction(Request $request, $id = 0) {
-      
+
         $selectParent = $this->getDoctrine()->getRepository(Category::class)->getCategoryForSelect();
-
-
 
         $categories = $this->getDoctrine()
                 ->getRepository(Category::class)
                 ->findOneBy(array('id' => $id));
 
-      /*  if ($categories->getRoot() == 0) {
-            $selectParent = null;
-        }*/
-  //   var_dump($categories);die;
         $categorieForm = new Category();
-   //  echo  $categories->getRoot();die;
+
         $form = $this->createFormBuilder($categorieForm)
                 ->add('root', ChoiceType::class, array(
                     'choices' => $selectParent,
                     'attr' => array('class' => 'form-control'),
                     'required' => true,
-                    'data'=>$categories->getRoot(),
+                    'data' => $categories->getRoot(),
                 ))
                 ->add('name', TextType::class, array(
                     'label' => $this->get('translator')->trans('name'),
@@ -119,7 +129,7 @@ class CategoryController extends Controller {
         if ($form->isSubmitted() && $form->isValid()) {
             $categorie = $form->getData();
             // $categorie->setState(1); // Attente de validation
-           // var_dump($categorie);die;
+            // var_dump($categorie);die;
             $em = $this->getDoctrine()->getManager();
             $em->persist($categorie[0]);
             $em->flush();

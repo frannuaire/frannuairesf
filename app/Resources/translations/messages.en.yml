@@ -46,3 +46,5 @@ norss: __norss
 homeadmin: __homeadmin
 suscription.basic: __suscription.basic
 search.h2: __search.h2
+category.delete.confirm: __category.delete.confirm
+message.flash: __message.flash

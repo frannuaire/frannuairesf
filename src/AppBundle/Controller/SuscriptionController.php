@@ -31,8 +31,6 @@ class SuscriptionController extends Controller {
         // $date = new DateTime();
         //  die(var_dump($date));
 
-
-
         $form = $this->createFormBuilder($link)
                 ->add('category', ChoiceType::class, array(
                     'choices' => $this->getCategory(),

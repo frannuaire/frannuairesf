@@ -61,10 +61,10 @@ class AdminController extends Controller {
         $referer = $request->headers->get('referer');
 
         return $this->redirect($referer);
-   /*     return $this->render('admin/validate.html.twig', [
-                    'webSites' => $websites,
-                    'message' => "",
-        ]);*/
+        /*     return $this->render('admin/validate.html.twig', [
+          'webSites' => $websites,
+          'message' => "",
+          ]); */
     }
 
     /**
@@ -80,10 +80,10 @@ class AdminController extends Controller {
 
         $em->remove($websites);
         $em->flush();
-                $referer = $request->headers->get('referer');
+        $referer = $request->headers->get('referer');
 
         return $this->redirect($referer);
-      //  return $this->redirectToRoute('validate', array('message' => $this->get('translator')->trans('link.deleted')));
+        //  return $this->redirectToRoute('validate', array('message' => $this->get('translator')->trans('link.deleted')));
     }
 
     /**
@@ -120,7 +120,7 @@ class AdminController extends Controller {
         foreach ($websitesToCheck as $link) {
             if (!$this->url_test($link->getUrl())) {
                 $em = $this->getDoctrine()->getManager();
-                $link->setState('3');
+                $link->setState(Link::STATE_TROUBLE);
                 $em->persist($link);
                 $em->flush();
             }

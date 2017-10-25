@@ -3,13 +3,25 @@
     <div class='col'>{{'category.name'|trans}}</div>
     <div class='col'>{{'category.child'|trans}}</div>
 </div>
+{% block javascripts %}
+    <script>
+function deleteCat(chemin){
+    $retour =  confirm("{{'category.delete.confirm'|trans}}");
+    if ($retour){
+         window.location.href = chemin;
+    }
+}
+</script>
+{% endblock %}
 {% for category in categories %}
     <div class='row rowAdminBoarder' style='color:#fff;'>
         <div class='col' >
             <a href="{{ path('admin-category-update', {'id': category.id }) }}" class="">
                 <img  class="icon-small white" src="{{asset('img/Entypo+/new-message.svg')}}" alt="New message pictogram">
             </a>
-            <img  class="icon-small trach" src="{{asset('img/Entypo+/trash.svg')}}" alt="Trash pictogram">
+            <a href="#" class="" onclick="deleteCat('{{ path('admin-category-delete', {'id': category.id }) }}')">
+                <img  class="icon-small trach" src="{{asset('img/Entypo+/trash.svg')}}" alt="Trash pictogram">
+            </a>
         </div>
         <div class='col'>{{category.name}}</div>
         <div class='col'>
@@ -23,4 +35,4 @@
             {% endif %}
         </div>
     </div>
-{% endfor %}     
+{% endfor %}    

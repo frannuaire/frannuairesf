@@ -5,7 +5,11 @@
         <div class="container text-center" >
             <h1 class="text-center">{{'admin.dashboard.title'|trans}}</h1><hr class="text-center"/>
             {% include 'admin/adminpannel.html.twig' %}
-
+                {% for message in app.flashes('notice') %}
+                    <div class="flash-notice">
+                        <h2 class='info'>{{'message.flash'|trans}} {{ message }}</h2>
+                    </div>
+                {% endfor %}
         </div>
     </div>
 </header>
