@@ -48,4 +48,19 @@ class CategoryRepository extends EntityRepository {
         return count($this->lastResult->getScalarResult());
     }
 
+    /**
+     * get Categories for ChoiceType
+     * @return Array
+     */
+    public function getCategoryForSelect(): Array {
+        $cat = $this->findAll();
+
+        $catUnit = array();
+        foreach ($cat as $bu) {
+            $catUnit[$bu->getName()] = $bu->getId();
+        }
+
+        return $catUnit;
+    }
+
 }

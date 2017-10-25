@@ -9,6 +9,13 @@ use AppBundle\Entity\Category;
 use AppBundle\Entity\Link;
 use AppBundle\Entity\Categorytext;
 
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Forms;
+use Symfony\Component\Form\Extension\HttpFoundation\HttpFoundationExtension;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
 class CategoryController extends Controller {
 
     /**
@@ -62,6 +69,64 @@ class CategoryController extends Controller {
                     'selectCategory' => $selectCategory,
                     'textCategory' => $textCategory,
                     'webSites' => $websites,
+        ]);
+    }
+    
+      /**
+     * @Route("/admin/category-update/{id}", name="admin-category-update")
+     */
+    public function adminCategotyUpdateAction(Request $request, $id = 0) {
+      
+        $selectParent = $this->getDoctrine()->getRepository(Category::class)->getCategoryForSelect();
+
+
+
+        $categories = $this->getDoctrine()
+                ->getRepository(Category::class)
+                ->findOneBy(array('id' => $id));
+
+      /*  if ($categories->getRoot() == 0) {
+            $selectParent = null;
+        }*/
+  //   var_dump($categories);die;
+        $categorieForm = new Category();
+   //  echo  $categories->getRoot();die;
+        $form = $this->createFormBuilder($categorieForm)
+                ->add('root', ChoiceType::class, array(
+                    'choices' => $selectParent,
+                    'attr' => array('class' => 'form-control'),
+                    'required' => true,
+                    'data'=>$categories->getRoot(),
+                ))
+                ->add('name', TextType::class, array(
+                    'label' => $this->get('translator')->trans('name'),
+                    'data' => $categories->getName(),
+                    'attr' => array('class' => 'form-control', 'placeholder' => $this->get('translator')->trans('category.placeholder'))
+                ))
+                ->add('usable', CheckboxType::class, array(
+                    'label' => $this->get('translator')->trans('Allow submition '),
+                    'data' => $categories->getUsable(),
+                    'required' => false,
+                ))
+                ->add('save', SubmitType::class, array('label' => $this->get('translator')->trans('category.update'),
+                    'attr' => array('class' => 'btn btn-dark btn-outline-warning')))
+                ->getForm();
+
+
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $categorie = $form->getData();
+            // $categorie->setState(1); // Attente de validation
+           // var_dump($categorie);die;
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($categorie[0]);
+            $em->flush();
+        }
+
+        return $this->render('admin/category/category.form.html.twig', [
+                    'form' => $form->createView(),
         ]);
     }
 
