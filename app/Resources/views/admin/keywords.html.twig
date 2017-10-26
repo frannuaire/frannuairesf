@@ -23,9 +23,9 @@
             <div class='col-lg-2'>{{'keyword.hasresults'|trans}}</div>
         </div>
         {% for keyword in keywords %}
-            <div class='row rowAdminBoarder' style='color:#fff;'>
+            <div class='row rowAdminBoarder {% if loop.index is divisibleby(2) %}td-odd{% else %}td-even{% endif %}' style='color:#fff;'>
 
-                <div class='col-lg-6'>{{keyword.word}}</div>
+                <div class='col-lg-6'><a class='linkAdmin' href="{{path('search', {'keyword':keyword.word})}}">{{keyword.word}}</a></div>
                 <div class='col-lg-2'>{{keyword.date|date('d/m/Y')}}</div>
                 <div class='col-lg-2'>{{keyword.occurence}}</div>
                 <div class='col-lg-2'>{{keyword.hasresults}}</div>
