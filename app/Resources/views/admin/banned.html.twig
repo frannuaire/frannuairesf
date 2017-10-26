@@ -17,17 +17,17 @@
 
     <div class="container adminBoarder">
 
-        <div class='row rowAdminBoarder'>
-            {% for site in webSites%}   
-                <div class='row rowAdminBoarder '>
-                    <div class='col-lg-2'><a href="{{ path('isvalid', {'id': site.id})}}" class='btn btn-primary '>{{'validate'}}</a>
-                        <a href="{{ path('refuse', {'id': site.id})}}" class='btn btn-warning '>{{'refuse'}}</a>
-                    </div>
-                    <div class='col-lg-2'>{{site.name}} - <a href='{{site.url}}'>{{site.url}}</a></div>
-                    <div class='col-lg-8'>{{site.description}}</div>
+
+        {% for site in webSites%}   
+            <div class='row rowAdminBoarder {% if loop.index is divisibleby(2) %}td-odd{% else %}td-even{% endif %}' style='color:#fff;'>
+                <div class='col-lg-2'><a href="{{ path('isvalid', {'id': site.id})}}" class='btn btn-primary '>{{'validate'}}</a>
+                    <a href="{{ path('refuse', {'id': site.id})}}" class='btn btn-warning '>{{'refuse'}}</a>
                 </div>
-            {% endfor %}    
-        </div>
+                <div class='col-lg-3'>{{site.name}} - <a href='{{site.url}}'>{{site.url}}</a></div>
+                <div class='col-lg-7'>{{site.description}}</div>
+            </div>
+        {% endfor %}    
+
     </div>
 
 {% endblock %}

@@ -17,18 +17,18 @@
 
     <div class="container adminBoarder">
         <div class='row headBoard'>
-            <div class='col-lg-6'>{{'keyword.word'|trans}}</div>
-            <div class='col-lg-2'>{{'keyword.date'|trans}}</div>
-            <div class='col-lg-2'>{{'keyword.occurence'|trans}}</div>
-            <div class='col-lg-2'>{{'keyword.hasresults'|trans}}</div>
+            <div class='col-lg-6 col-sm-3 col'>{{'keyword.word'|trans}}</div>
+            <div class='col-lg-2 col-sm-3 col'>{{'keyword.date'|trans}}</div>
+            <div class='col-lg-2 col-sm-3 col'>{{'keyword.occurence'|trans}}</div>
+            <div class='col-lg-2 col-sm-3 col'>{{'keyword.hasresults'|trans}}</div>
         </div>
         {% for keyword in keywords %}
             <div class='row rowAdminBoarder {% if loop.index is divisibleby(2) %}td-odd{% else %}td-even{% endif %}' style='color:#fff;'>
 
-                <div class='col-lg-6'><a class='linkAdmin' href="{{path('search', {'keyword':keyword.word})}}">{{keyword.word}}</a></div>
-                <div class='col-lg-2'>{{keyword.date|date('d/m/Y')}}</div>
-                <div class='col-lg-2'>{{keyword.occurence}}</div>
-                <div class='col-lg-2'>{{keyword.hasresults}}</div>
+                <div class='col-lg-6 col-sm-3 col'><a class='linkAdmin' href="{{path('search', {'keyword':keyword.word})}}">{{keyword.word}}</a></div>
+                <div class='col-lg-2 col-sm-3 col'>{{keyword.date|date('d/m/Y')}}</div>
+                <div class='col-lg-2 col-sm-3 col'>{{keyword.occurence}}</div>
+                <div class='col-lg-2 col-sm-3 col'>{{keyword.hasresults}}</div>
             </div>
         {% endfor %}     
 

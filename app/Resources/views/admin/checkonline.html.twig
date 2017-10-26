@@ -28,9 +28,9 @@
         <div class='row rowAdminBoarder'>
             {% for site in webSites%}
                 {% if site.prio %}
-                    <div class='row rowAdminBoarder premium'> 
+                    <div class='row rowAdminBoarder premium {% if loop.index is divisibleby(2) %}td-odd{% else %}td-even{% endif %}' style='color:#fff;'> 
                     {% else %}       
-                        <div class='row rowAdminBoarder '>
+                        <div class='row rowAdminBoarder {% if loop.index is divisibleby(2) %}td-odd{% else %}td-even{% endif %}' style='color:#fff;'>
                         {% endif %}   
 
                         <div class='col-lg-2'><a href="{{ path('isvalid', {'id': site.id})}}" class='btn btn-primary '>{{'validate'}}</a>
@@ -39,8 +39,8 @@
                                 <img class="icon" src="{{ asset('img/Entypo+/star.svg') }}" alt="Star pictogram" title='premium member'>    
                             {% endif %}
                         </div>
-                        <div class='col-lg-2'>{{site.name}} - <a href='{{site.url}}'>{{site.url}}</a></div>
-                        <div class='col-lg-8'>{{site.description}}</div>
+                        <div class='col-lg-3'>{{site.name}} - <a href='{{site.url}}'>{{site.url}}</a></div>
+                        <div class='col-lg-7'>{{site.description}}</div>
                     </div>
                 {% endfor %}    
             </div>

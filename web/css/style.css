@@ -54,7 +54,7 @@ h1{color:#fff;padding-top: 10px;}
 .rowAdminBoarder{
     padding-bottom: 5px;
     padding-top: 5px;
-    font-size: 0.8em;
+    font-size: 1em;
 }
 .border-b{
     border-bottom: #fff solid 1px;
@@ -98,4 +98,6 @@ h1{color:#fff;padding-top: 10px;}
 .td-even{
  background-color: rgba(250,150,0,0.8);   
 }
-
+.headBoard{
+     font-weight: 900;
+}
