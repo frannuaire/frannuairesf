@@ -51,11 +51,17 @@ category.child: 'Sous catégorie'
 child: Enfant
 keyword.word: 'Mots clefs'
 keyword.date: Date
-keyword.hasresults: __keyword.hasresults
+keyword.hasresults: 'A des sites qui répondent'
+keyword.occurence: 'Nombre de recherche'
 site.action: Action
 site.description: Description
 nocomments: 'Pas de commentaire pour le moment'
 norss: 'Pas de flux RSS'
 category.delete.confirm: 'Etes vous sure de vouloir supprimer cet élément?'
 category.deleted: 'Categorie supprimé.'
-message.flash: Information : 
+message.flash: 'Information :'
+admin.dashboard.category: Catégorie
+admin.category.add: Ajouter une catégorie
+category.update: Enregistrer
+category.placeholder: Nom de la catégorie
+allow.submition: 'Accepter les inscriptions '

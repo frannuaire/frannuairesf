@@ -32,7 +32,7 @@ class Category
      *
      * @ORM\Column(name="usable", type="boolean", nullable=false)
      */
-    private $usable = '1';
+    private $usable = true;
 
     /**
      * @var integer

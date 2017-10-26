@@ -92,3 +92,10 @@ h1{color:#fff;padding-top: 10px;}
 .flash-notice{
     background-color: rgba(250,250,250,0.5);
 }
+.td-odd{
+ background-color: rgba(250,90,0,0.8);   
+}
+.td-even{
+ background-color: rgba(250,150,0,0.8);   
+}
+

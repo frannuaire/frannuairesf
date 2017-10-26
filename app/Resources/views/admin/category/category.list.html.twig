@@ -14,7 +14,7 @@ function deleteCat(chemin){
 </script>
 {% endblock %}
 {% for category in categories %}
-    <div class='row rowAdminBoarder' style='color:#fff;'>
+    <div class='row rowAdminBoarder {% if loop.index is divisibleby(2) %}td-odd{% else %}td-even{% endif %}' style='color:#fff;'  >
         <div class='col' >
             <a href="{{ path('admin-category-update', {'id': category.id }) }}" class="">
                 <img  class="icon-small white" src="{{asset('img/Entypo+/new-message.svg')}}" alt="New message pictogram">

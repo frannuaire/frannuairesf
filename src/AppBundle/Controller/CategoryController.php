@@ -99,6 +99,10 @@ class CategoryController extends Controller {
                 ->getRepository(Category::class)
                 ->findOneBy(array('id' => $id));
 
+        if (null === $categories) {
+            $categories = new Category();
+        }
+
         $categorieForm = new Category();
 
         $form = $this->createFormBuilder($categorieForm)
@@ -114,7 +118,7 @@ class CategoryController extends Controller {
                     'attr' => array('class' => 'form-control', 'placeholder' => $this->get('translator')->trans('category.placeholder'))
                 ))
                 ->add('usable', CheckboxType::class, array(
-                    'label' => $this->get('translator')->trans('Allow submition '),
+                    'label' => $this->get('translator')->trans('allow.submition'),
                     'data' => $categories->getUsable(),
                     'required' => false,
                 ))
@@ -131,7 +135,7 @@ class CategoryController extends Controller {
             // $categorie->setState(1); // Attente de validation
             // var_dump($categorie);die;
             $em = $this->getDoctrine()->getManager();
-            $em->persist($categorie[0]);
+            $em->persist($categorie);
             $em->flush();
         }
 

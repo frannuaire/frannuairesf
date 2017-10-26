@@ -3,20 +3,24 @@
 {% block body %}
     <header class='header'>
         <div class="container text-center" >
-            <h1 class="text-center">{{'admin.dashboard.title'|trans}}</h1><hr class="text-center"/>
+            <h1 class="text-center">{{'admin.dashboard.category'|trans}}</h1><hr class="text-center"/>
             {% include 'admin/adminpannel.html.twig' %}
-                {% for message in app.flashes('notice') %}
-                    <div class="flash-notice">
-                        <h2 class='info'>{{'message.flash'|trans}} {{ message }}</h2>
-                    </div>
-                {% endfor %}
+            {% for message in app.flashes('notice') %}
+                <div class="flash-notice">
+                    <h2 class='info'>{{'message.flash'|trans}} {{ message }}</h2>
+                </div>
+            {% endfor %}
         </div>
     </div>
 </header>
-
 <div class="container">
-            {% set vars = {'categories': categories} %}
-{% include 'admin/category/category.list.html.twig' with vars %}
+     <a href="{{ path('admin-category-update', {'id': null }) }}" class=""><h2> {{'admin.category.add'|trans}}
+            <img class="icon white" src="{{ asset('img/Entypo+/circle-with-plus.svg') }}" alt="Circle with plus pictogram">
+     </h2></a>
+</div>
+<div class="container">
+    {% set vars = {'categories': categories} %}
+    {% include 'admin/category/category.list.html.twig' with vars %}
 
 </div>  
 
