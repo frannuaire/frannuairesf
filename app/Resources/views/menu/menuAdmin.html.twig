@@ -7,16 +7,16 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="{{ path('homepage') }}">{{'home'|trans}}</a>
+                <a class="nav-link" href="{{ path('homepage') }}">{{'menu.home'|trans}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('board') }}">{{'dashboard'|trans}}</a>
+                <a class="nav-link" href="{{ path('board') }}">{{'menu.dashboard'|trans}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('homeadmin') }}">{{'homeadmin'|trans}}</a>
+                <a class="nav-link" href="{{ path('homeadmin') }}">{{'menu.homeadmin'|trans}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('logout') }}">{{'Logout'|trans}}</a>
+                <a class="nav-link" href="{{ path('logout') }}">{{'menu.logout'|trans}}</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" name='search' action="{{path('search')}}">

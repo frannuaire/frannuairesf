@@ -34,19 +34,20 @@ class SuscriptionController extends Controller {
         $form = $this->createFormBuilder($link)
                 ->add('category', ChoiceType::class, array(
                     'choices' => $this->getCategory(),
+                      'label' => $this->get('translator')->trans('sucription.category'),
                     'attr' => array('class' => 'form-control'),
                     'required' => true,
                 ))
                 ->add('name', TextType::class, array(
-                    'label' => $this->get('translator')->trans('name'),
-                    'attr' => array('class' => 'form-control', 'placeholder' => $this->get('translator')->trans('title.placeholder'))
+                    'label' => $this->get('translator')->trans('sucription.name'),
+                    'attr' => array('class' => 'form-control', 'placeholder' => $this->get('translator')->trans('sucription.title.placeholder'))
                 ))
                 ->add('url', UrlType::class, array(
-                    'label' => $this->get('translator')->trans('url'),
-                    'attr' => array('class' => 'form-control', 'placeholder' => $this->get('translator')->trans('url.placeholder'))
+                    'label' => $this->get('translator')->trans('sucription.url'),
+                    'attr' => array('class' => 'form-control', 'placeholder' => $this->get('translator')->trans('sucription.url.placeholder'))
                 ))
                 ->add('description', TextareaType::class, array(
-                    'label' => $this->get('translator')->trans('description'),
+                    'label' => $this->get('translator')->trans('sucription.description'),
                     'attr' => array('class' => 'form-control')
                 ))
                 ->add('email', RepeatedType::class, array(
@@ -54,14 +55,14 @@ class SuscriptionController extends Controller {
                     'invalid_message' => 'The mail fields must match.',
                     'options' => array('attr' => array('class' => 'form-control')),
                     'required' => true,
-                    'first_options' => array('label' => $this->get('translator')->trans('email')),
-                    'second_options' => array('label' => $this->get('translator')->trans('email.confirm')),
+                    'first_options' => array('label' => $this->get('translator')->trans('sucription.email')),
+                    'second_options' => array('label' => $this->get('translator')->trans('sucription.email.confirm')),
                 ))
                 ->add('image', UrlType::class, array(
-                    'label' => $this->get('translator')->trans('image'),
+                    'label' => $this->get('translator')->trans('sucription.image'),
                     'attr' => array('class' => 'form-control',
-                        'placeholder' => $this->get('translator')->trans('image.placeholder'),
-                        'title' => $this->get('translator')->trans('image.placeholder')
+                        'placeholder' => $this->get('translator')->trans('sucription.image.placeholder'),
+                        'title' => $this->get('translator')->trans('sucription.image.title')
                     ),
                     'required' => false,
                 ))
@@ -73,7 +74,7 @@ class SuscriptionController extends Controller {
                     'time_widget' => 'single_text',
                     'date_format' => 'dd/MM/yyyy'
                 ])
-                ->add('save', SubmitType::class, array('label' => $this->get('translator')->trans('save'),
+                ->add('save', SubmitType::class, array('label' => $this->get('translator')->trans('sucription.save'),
                     'attr' => array('class' => 'btn btn-dark btn-outline-warning')))
                 ->getForm();
 

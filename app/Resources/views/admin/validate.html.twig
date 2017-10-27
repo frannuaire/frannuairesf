@@ -17,9 +17,9 @@
 
     <div class="container adminBoarder">
         <div class='row headBoard'>
-            <div class='col-lg-2'>{{'site.action'|trans}}</div>
-            <div class='col-lg-2'>{{'site.title'}}</div>
-            <div class='col-lg-8'>{{'site.description'|trans}}</div>
+            <div class='col-lg-2'>{{'admin.site.action'|trans}}</div>
+            <div class='col-lg-2'>{{'admin.site.title'|trans}}</div>
+            <div class='col-lg-8'>{{'admin.site.description'|trans}}</div>
         </div>
         {% for site in webSites%}
             {% if site.prio %}
@@ -28,14 +28,14 @@
                     <div class='row rowAdminBoarder {% if loop.index is divisibleby(2) %}td-odd{% else %}td-even{% endif %}' style='color:#fff;'>
                     {% endif %}   
 
-                    <div class='col-lg-2'><a href="{{ path('isvalid', {'id': site.id})}}" class='btn btn-primary '>{{'validate'}}</a>
-                        <a href="{{ path('refuse', {'id': site.id})}}" class='btn btn-dark linkAdmin '>{{'refuse'}}</a>
+                    <div class='col-lg-2'><a href="{{ path('isvalid', {'id': site.id})}}" class='btn btn-primary btn-block '>{{'admin.buton.validate'|trans}}</a>
+                        <a href="{{ path('refuse', {'id': site.id})}}" class='btn btn-dark linkAdmin btn-block'>{{'admin.buton.refuse'|trans}}</a>
                         {% if site.prio %}
                             <img class="icon" src="{{ asset('img/Entypo+/star.svg') }}" alt="Star pictogram" title='premium member'>    
                         {% endif %}
                     </div>
-                    <div class='col-lg-2'>{{site.name}} - <a href='{{site.url}}' class='linkAdmin'>{{site.url}}</a></div>
-                    <div class='col-lg-8'>{{site.description}}</div>
+                    <div class='col-lg-3'>{{site.name}} - <a href='{{site.url}}' class='linkAdmin'>{{site.url}}</a></div>
+                    <div class='col-lg-7'>{{site.description}}</div>
                 </div>
             {% endfor %}     
 

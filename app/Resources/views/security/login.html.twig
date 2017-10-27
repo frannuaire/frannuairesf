@@ -6,19 +6,19 @@
     {% endif %}
     <div class='container'>
         <form action="{{ path('login') }}" method="post" id='login'>
-            <h1>{{'logon'|trans}}</h1>
-            <label for="username">Username:</label>
+            <h1>{{'login.logon'|trans}}</h1>
+            <label for="username">{{'login.username'|trans}}:</label>
             <div class="input-group input-group-lg">
                 <span class="input-group-addon" id="basic-addon1">@</span>
-                <input type="text" id="username" name="_username" value="{{ last_username }}"  class="form-control" placeholder="{{'username'|trans}}"/>
+                <input type="text" id="username" name="_username" value="{{ last_username }}"  class="form-control" placeholder="{{'login.username'|trans}}"/>
             </div>
-            <label for="password">Password:</label>
+            <label for="password">{{'login.password'|trans}}:</label>
             <div class="input-group input-group-lg">
                 <span class="input-group-addon" id="basic-addon1">*</span>
-                <input type="password" id="password" name="_password" class="form-control" placeholder="{{'password'|trans}}"/>
+                <input type="password" id="password" name="_password" class="form-control" placeholder="{{'login.password'|trans}}"/>
             </div>
             <div class='row' style='margin-top:40px;'>
-                <button type="submit" class='btn btn-warning btn-lg btn-block' >{{'login'|trans}}</button>
+                <button type="submit" class='btn btn-warning btn-lg btn-block' >{{'login.login'|trans}}</button>
             </div>
         </form>
     </div>

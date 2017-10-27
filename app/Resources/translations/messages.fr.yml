@@ -4,32 +4,36 @@ category.subcategory: 'Sous catégories'
 category.emptySub: 'Il n''y a pas de sous catégorie'
 category.sites: 'Les derniers sites inscrits ici'
 home.title: 'L''annuaire générique francophone'
-Dashboard: 'Tableau de bord'
-Logout: Déconnexion
-site.title: frannuaire-gratuit
-home: Accueil
-login: 'Se Connecter'
-search: Rechercher
-dashboard: 'Tableau de bord'
-logon: Connexion
-username: Utilisateur
-password: 'Mot de passe'
-slogan: 'L''annuaire générique francophone'
 home.description: 'Frannuaire-gratuit.com est un annuaire généraliste gratuit. Notre annuaire généraliste vous permet d''être mieux vu ou de rechercher sur le web simplement avec un résultat de qualité. Les sites sont classés par catégorie afin de clarifier la visibilité et la recherche dans l''annuaire. Les sites référencés dans l''annuaire sont visités manuellement et accepté selon des critères strict afin de vous garantir un contenu intéressant et riche.'
+site.title: frannuaire-gratuit
+search: Rechercher
+menu.home: Accueil
+menu.dashboard: 'Tableau de bord'
+menu.homeadmin: 'Panneau d''administration'
+menu.logout: Déconnexion
+menu.suscription.basic: 'Inscription Basique'
+menu.login: 'Se Connecter'
+login.username: Utilisateur
+login.password: 'Mot de passe'
+login.login: Connexion
+slogan: 'L''annuaire générique francophone'
 more: 'd''informations sur ce site'
 Comments: Commentaires
 rss: RSS
 commentof: 'Commentaire du'
+sucription.suscription.basic: 'Inscription Basique'
+sucription.name: Titre
+sucription.url: Url
 suscription.basic: 'Inscription Basique'
-name: Titre
-url: Url
-description: 'Description (1500 caractères min)'
-email: E-mail
-email.confirm: 'Confirmer votre e-mail'
-save: 'Inscrire mon site'
-image.placeholder: 'il s''agit d''une image au format 120x90 qui illustrera votre site'
-title.placeholder: 'Sera utilisé comme ancre dans l''annuaire'
-url.placeholder: 'http://www.exemple.com'
+sucription.description: 'Description de votre site (1500 caractères min)'
+sucription.image: 'Url du thumbnail de votre site préférence 120*90'
+sucription.image.placeholder: 'Url de votre image ou logo'
+sucription.category: Catégorie
+sucription.email: 'Votre mail'
+sucription.email.confirm: 'Confirmer votre mail'
+sucription.save: 'Inscrire mon site'
+sucription.title.placeholder: 'Sera utilisé comme ancre dans l''annuaire'
+sucription.url.placeholder: 'http://www.exemple.com'
 description.min: 'Vous devez saisir au minimum 1500 Caractères'
 homeadmin: 'Panneau d''aministration'
 admin.dashboard.title: 'Panneau de contrôle'
@@ -42,6 +46,12 @@ admin.link.configuration: Configuration
 admin.link.addon: 'Plug ins'
 admin.link.other: Autres
 admin.link.disconnect: Déconnexion
+admin.link.logout: Se déconnecter
+admin.site.action: Action
+admin.site.description: Description
+admin.site.title: Titre du site
+admin.buton.refuse: Refuser
+admin.buton.validate: Valider
 link.deleted: 'Lien supprimé avec succè'
 search.h2: 'Votre recherche pour <strong class=''keyword''>%keys%</strong> contient <strong class=''keyword''>%nbRes%</strong> Résultat(s)'
 admin.link.banned: 'Sites Bannis'
@@ -53,15 +63,15 @@ keyword.word: 'Mots clefs'
 keyword.date: Date
 keyword.hasresults: 'A des sites qui répondent'
 keyword.occurence: 'Nombre de recherche'
-site.action: Action
-site.description: Description
 nocomments: 'Pas de commentaire pour le moment'
 norss: 'Pas de flux RSS'
 category.delete.confirm: 'Etes vous sure de vouloir supprimer cet élément?'
 category.deleted: 'Categorie supprimé.'
 message.flash: 'Information :'
 admin.dashboard.category: Catégorie
-admin.category.add: Ajouter une catégorie
+admin.category.add: 'Ajouter une catégorie'
 category.update: Enregistrer
-category.placeholder: Nom de la catégorie
+category.placeholder: 'Nom de la catégorie'
 allow.submition: 'Accepter les inscriptions '
+meta.home.description: 'Annuaire généraliste gratuit de site francophone. Annuaire pour référencer vos sites web gratuitement et simplement.'
+login.logon: Connexion

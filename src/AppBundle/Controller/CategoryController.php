@@ -132,8 +132,6 @@ class CategoryController extends Controller {
 
         if ($form->isSubmitted() && $form->isValid()) {
             $categorie = $form->getData();
-            // $categorie->setState(1); // Attente de validation
-            // var_dump($categorie);die;
             $em = $this->getDoctrine()->getManager();
             $em->persist($categorie);
             $em->flush();

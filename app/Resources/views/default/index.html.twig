@@ -1,5 +1,8 @@
 {% extends 'bootstrap.html.twig' %}
-
+{% block meta %}
+    <meta name="description" content="{{'meta.home.description'|trans}}" />
+    <!--add your personnal meta like open graph-->
+{% endblock %}   
 {% block body %}
     <header class='header'>
         <div class="container text-center" >

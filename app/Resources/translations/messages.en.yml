@@ -48,3 +48,17 @@ suscription.basic: __suscription.basic
 search.h2: __search.h2
 category.delete.confirm: __category.delete.confirm
 message.flash: __message.flash
+admin.dashboard.category: __admin.dashboard.category
+admin.category.add: __admin.category.add
+keyword.occurence: __keyword.occurence
+meta.home.description: __meta.home.description
+menu.home: __menu.home
+menu.dashboard: __menu.dashboard
+menu.homeadmin: __menu.homeadmin
+menu.logout: __menu.logout
+menu.suscription.basic: __menu.suscription.basic
+menu.login: __menu.login
+login.logon: __login.logon
+login.username: __login.username
+login.password: __login.password
+login.login: __login.login
