@@ -24,17 +24,24 @@ class CategoryController extends Controller {
 
         $categories = $this->getDoctrine()->getRepository(Category::class)->findWithSubCategory($id);
         $nbResult = $this->getDoctrine()->getRepository(Category::class)->countLastResultElements();
-
+        // $pagination = null;
         if ($nbResult == 0) {
-            $categories = $this->getDoctrine()
+            $categories = $this->getDoctrine('c')
                     ->getRepository(Category::class)
                     ->findBy(array('root' => $id));
         }
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $categories, $request->query->getInt('page', 1), 10
+        );
+
 
 
         // replace this example code with whatever you need
         return $this->render('admin/category/index.html.twig', [
                     'categories' => $categories,
+                    'pagination' => $pagination
         ]);
     }
 

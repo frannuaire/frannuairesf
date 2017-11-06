@@ -1,7 +1,14 @@
+{# display navigation #}
+<div class="navigation">
+    {{ knp_pagination_render(pagination) }}
+</div>
 <div class='row rowAdminBoarder' style='color:#fff;'>
-    <div class='col'>{{'action'|trans}}</div>
-    <div class='col'>{{'category.name'|trans}}</div>
-    <div class='col'>{{'category.child'|trans}}</div>
+    <div class='col'>{{ knp_pagination_sortable(pagination, 'action'|trans, 'c.id')}}</div>
+   
+    <div class='col'>{{ knp_pagination_sortable(pagination, 'category.name'|trans, 'name')}}
+        <span class="badge badge-pill badge-dark">{{ pagination.getTotalItemCount }}</span>
+    </div>
+    <div class='col'>{{'category.child'|trans}} </div>
 </div>
 {% block javascripts %}
     <script>
@@ -13,7 +20,7 @@ function deleteCat(chemin){
 }
 </script>
 {% endblock %}
-{% for category in categories %}
+{% for category in pagination %}
     <div class='row rowAdminBoarder {% if loop.index is divisibleby(2) %}td-odd{% else %}td-even{% endif %}' style='color:#fff;'  >
         <div class='col' >
             <a href="{{ path('admin-category-update', {'id': category.id }) }}" class="">
@@ -36,3 +43,7 @@ function deleteCat(chemin){
         </div>
     </div>
 {% endfor %}    
+{# display navigation #}
+<div class="navigation">
+    {{ knp_pagination_render(pagination) }}
+</div>
