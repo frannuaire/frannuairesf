@@ -46,10 +46,10 @@ class CategoryController extends Controller {
     }
 
     /**
-     * @Route("/category/{id}", name="_category")
+     * @Route("/category/{id}/{page}", name="_category")
      * 
      */
-    public function categoryAction(Request $request, $id) {
+    public function categoryAction(Request $request, $id, $page=1) {
         // get current category
         $selectCategory = $this->getDoctrine()
                 ->getRepository(Category::class)
@@ -67,14 +67,19 @@ class CategoryController extends Controller {
         // get website category
         $websites = $this->getDoctrine()
                 ->getRepository(Link::class)
-                ->findBy(array('category' => $id, 'state' => Link::STATE_VALID), array('date' => 'desc', 'prio' => 'desc'), Link::LIST_ITEMS);
+                ->findBy(array('category' => $id, 'state' => Link::STATE_VALID), array('date' => 'desc', 'prio' => 'desc'));
 
-
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $websites, $request->query->getInt('page', $page), 8
+        );
+        
         return $this->render('annuaire/category.html.twig', [
                     'categories' => $cat,
                     'selectCategory' => $selectCategory,
                     'textCategory' => $textCategory,
                     'webSites' => $websites,
+             'pagination' => $pagination
         ]);
     }
 

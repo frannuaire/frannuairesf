@@ -101,3 +101,27 @@ h1{color:#fff;padding-top: 10px;}
 .headBoard{
      font-weight: 900;
 }
+
+/**
+pagination
+*/
+.pagination {
+    display: inline-block;
+}
+.pagination span.page a, .pagination span.first a, .pagination span.previous a 
+, .pagination span.next a, .pagination span.last a   {
+    color: white;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination span>a:hover:not(.active) {background-color: #ff8100;}
+
+.pagination span.current{
+      background-color: white;
+    color:  #000;  
+        float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}

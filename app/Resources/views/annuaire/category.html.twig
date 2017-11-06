@@ -45,9 +45,15 @@
     </header>
 
     <div class="container">
-        {% set vars = {'webSites': webSites} %}
+        {# display navigation #}
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+        {% set vars = {'webSites': pagination} %}
         {% include 'annuaire/categorySite.html.twig' with vars %}
-
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>
     </div>    
 
 
