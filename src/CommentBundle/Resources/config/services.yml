@@ -1,0 +1,4 @@
+services:
+#    comment.example:
+#        class: CommentBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

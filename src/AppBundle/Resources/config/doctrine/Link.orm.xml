@@ -4,6 +4,13 @@
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
+     <entity name="AppBundle\Entity\Comment">
+        <one-to-many
+            field="comments"
+            target-entity="Comment"
+            mapped-by="lid" />
+
+    </entity>
     <field name="uid" type="integer" column="uid" nullable="false">
       <options>
         <option name="unsigned"/>
