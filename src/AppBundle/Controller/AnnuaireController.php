@@ -44,7 +44,11 @@ class AnnuaireController extends Controller {
        
         $rss = $this->getDoctrine()
                 ->getRepository(Feed::class)
-                ->findBy(array('linkid' => $id));
+                ->findBy(array('id' => $id));
+        
+        $category = $this->getDoctrine()
+                ->getRepository(Category::class)
+                ->find($site->getCategory());
 
         $sxe = null;
         if (count($rss) > 0) {
@@ -68,6 +72,7 @@ class AnnuaireController extends Controller {
                         'comments' => $comments,
                         'nbComments'=>$nbComments,
                         'rss' => $sxe,
+                        'category'=>$category,
             ]);
     }
 }    

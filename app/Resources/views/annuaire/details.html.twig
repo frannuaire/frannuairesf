@@ -1,5 +1,10 @@
 {% extends 'bootstrap.html.twig' %}
+{% block meta %}
+    <title>{{category.getName}} - {{webSites.name}}</title>
 
+    <meta name="description" content="{{webSites.description|length > 50 ? webSites.description|slice(0, 160) ~ '...' : webSites.description }}   " />
+
+{% endblock %}
 {% block body %}
     <!-- Header details -->
     <header class='header'>
