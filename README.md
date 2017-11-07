@@ -4,7 +4,10 @@ This project is under construction.
 
 A Symfony project created on September 27, 2017, 6:09 pm.
 
-First of all do a composer instal command.
+First of all do a composer install command.
+```
+composer install
+```
 
 Then create your database schema or use  command line 
 ```
