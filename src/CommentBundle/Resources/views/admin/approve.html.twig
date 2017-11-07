@@ -1,0 +1,11 @@
+{% for comment in comments %}
+    <div class='row' >
+        <div class='col'>
+            <a class='btn btn-dark' href="{{ path('approvedComment', {id:comment.id} )}} ">Valider</a>
+            <a class='btn btn-warning' href="{{path('refusedComment', {id:comment.id})}}">Refuser</a>
+        </div>
+    <div class='col'>{{comment.message}}</div>
+    <div class='col'><a href='{{comment.link.url}}' target='_blank'>{{comment.link.name|raw}}</a></div>
+    </div>
+{% endfor %}    
+

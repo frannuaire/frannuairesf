@@ -4,6 +4,14 @@
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
+    <many-to-one
+            field="link"
+            target-entity="Link"
+            inversed-by="comments"
+            join-column="id">
+
+            <join-column name="lid" referenced-column-name="id" />
+        </many-to-one>
     <field name="lid" type="integer" column="lid" nullable="false">
       <options>
         <option name="unsigned"/>

@@ -4,7 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-
+use Doctrine\Common\Collections\ArrayCollection;
 /**
  * 99q5Link
  *
@@ -128,6 +128,16 @@ class Link {
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="lid")
+     */
+    private $comments;
+    
+     public function __construct()
+    {
+        $this->comments = new ArrayCollection();
+    }
 
     function getUid() {
         return $this->uid;

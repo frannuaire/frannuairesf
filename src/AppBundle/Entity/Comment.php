@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use AppBundle\Entity\Link as Link;
 
 /**
  * 99q5Comment
@@ -10,12 +12,14 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="99q5_comment")
  * @ORM\Entity
  */
-class Comment
-{
+class Comment {
+
+    const TO_APPROVE = 0;
+    const APPROVED = 1;
+
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="lid", type="integer", nullable=false)
+     *  @var integer
+     *  @ORM\Column(name="lid", type="integer", nullable=false)
      */
     private $lid;
 
@@ -55,6 +59,21 @@ class Comment
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Link",  inversedBy="comments")
+     * @ORM\JoinColumn(name="lid", referencedColumnName="id")
+     */
+    private $link;
+
+    public function getLink() {
+        return $this->link;
+    }
+
+    public function setLink(Link $link) {
+        $this->link = $link;
+    }
+
     function getLid() {
         return $this->lid;
     }
@@ -103,7 +122,4 @@ class Comment
         $this->id = $id;
     }
 
-
-
 }
-
