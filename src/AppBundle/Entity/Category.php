@@ -64,7 +64,7 @@ class Category
     }
 
     function setRoot($root) {
-        $this->root = $root;
+        $this->root = ($root===null)?0:$root;
     }
 
     function setUsable($usable) {
