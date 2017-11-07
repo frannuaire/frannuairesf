@@ -25,6 +25,17 @@ class AdminController extends Controller {
                     'webSites' => $websites,
         ]);
     }
+    
+    
+    /**
+     * @Route("/admin/com", name="com")
+     */
+    public function comAction(Request $request) {
+
+        return $this->render('admin/comments/index.html.twig', [
+                    
+        ]);
+    }
 
     /**
      * @Route("/admin/validate/{message}", name="validate")
@@ -50,7 +61,7 @@ class AdminController extends Controller {
         if (!$link) {
             throw $this->createNotFoundException('No website found');
         }
-        $link->setState(Link::STATE_PENDING);
+        $link->setState(Link::STATE_VALID);
         $em->persist($link);
         $em->flush();
 
