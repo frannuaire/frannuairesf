@@ -56,6 +56,7 @@ class CategoryRepository extends EntityRepository {
         $cat = $this->findAll();
 
         $catUnit = array();
+        $catUnit['root']=0;
         foreach ($cat as $bu) {
             $catUnit[$bu->getName()] = $bu->getId();
         }
