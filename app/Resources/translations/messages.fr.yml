@@ -34,6 +34,7 @@ sucription.email.confirm: 'Confirmer votre mail'
 sucription.save: 'Inscrire mon site'
 sucription.title.placeholder: 'Sera utilisé comme ancre dans l''annuaire'
 sucription.url.placeholder: 'http://www.exemple.com'
+sucription.captcha: code de sécurité
 description.min: 'Vous devez saisir au minimum 1500 Caractères'
 homeadmin: 'Panneau d''aministration'
 admin.dashboard.title: 'Panneau de contrôle'

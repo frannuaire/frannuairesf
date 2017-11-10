@@ -129,14 +129,11 @@ class Link {
      */
     private $id;
     
-    /**
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="lid")
-     */
-//    private $comments;
+
     
      public function __construct()
     {
-   //     $this->comments = new ArrayCollection();
+
     }
 
     function getUid() {

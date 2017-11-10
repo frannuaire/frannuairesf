@@ -18,6 +18,7 @@ use \Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use \Symfony\Component\Validator\Constraints\DateTime;
 use Symfony\Component\Form\FormError;
+use Gregwar\CaptchaBundle\Type\CaptchaType;
 
 class SuscriptionController extends Controller {
 
@@ -26,15 +27,13 @@ class SuscriptionController extends Controller {
      */
     public function basicAction(Request $request) {
 
-        // create a task and give it some dummy data for this example
         $link = new Link();
-        // $date = new DateTime();
-        //  die(var_dump($date));
+
 
         $form = $this->createFormBuilder($link)
                 ->add('category', ChoiceType::class, array(
                     'choices' => $this->getCategory(),
-                      'label' => $this->get('translator')->trans('sucription.category'),
+                    'label' => $this->get('translator')->trans('sucription.category'),
                     'attr' => array('class' => 'form-control'),
                     'required' => true,
                 ))
@@ -74,6 +73,10 @@ class SuscriptionController extends Controller {
                     'time_widget' => 'single_text',
                     'date_format' => 'dd/MM/yyyy'
                 ])
+                ->add('captcha', CaptchaType::class, array(
+                    'label' => $this->get('translator')->trans('sucription.captcha'),
+                     'attr' => array('class' => 'form-control')
+                ))
                 ->add('save', SubmitType::class, array('label' => $this->get('translator')->trans('sucription.save'),
                     'attr' => array('class' => 'btn btn-dark btn-outline-warning')))
                 ->getForm();
@@ -82,10 +85,9 @@ class SuscriptionController extends Controller {
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->validForm($form);
-                 $this->addFlash(
-            'notice',
-            'Your link were saved!'
-        );
+            $this->addFlash(
+                    'notice', 'Your link were saved!'
+            );
             return $this->redirectToRoute('homepage');
         }
 
