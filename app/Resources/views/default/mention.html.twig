@@ -1,0 +1,51 @@
+{% extends 'bootstrap.html.twig' %}
+{% block meta %}
+    <title>{{'home.title'|trans}}</title>
+    <meta name="description" content="{{'meta.home.description'|trans}}" />
+    <!--add your personnal meta like open graph-->
+{% endblock %}   
+{% block body %}
+    <header class='header'>
+        <div class="container text-center" >
+            <h1 class="text-center">{{'mention.title'|trans}}</h1><hr class="text-center"/>
+
+
+            <div itemscope itemtype="http://schema.org/LocalBusiness" class="text-center">
+                <h2><span itemprop="name">{{'mention.name'|trans}}</span></h2>  <a itemprop="image" href="{{'mention.image.url'|trans}}" > 
+                    <img src="{{'mention.image.url'|trans}}" style='width:100px;height:100px;' alt="logo {{'mention.name'|trans}}"/></a>
+                <span itemprop="description">{{'mention.description'|trans}}</span><br/>
+                {{'address'|trans}}:
+                <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                    <span itemprop="streetAddress">{{'mention.address'|trans}}</span><br/>
+                    <span itemprop="addressLocality">{{'mention.address.city'|trans}}</span>,<br/>
+                    <span itemprop="postalCode">{{'mention.address.postalcode'|trans}}</span><br/>
+                    <span itemprop="addressRegion">{{'mention.address.region'|trans}}</span><br/>
+                </div>
+                {{'Phone'|trans}}: <span itemprop="telephone">{{'mention.address.phone'|trans}}</span><br/>
+                <a itemprop="url" href="{{baseUrl}}">{{baseUrl}}</a>
+                <br />{{'mention.label.pricerange'|trans}}<span itemprop="priceRange">{{'mention.pricerange'|trans}}</span><br/>
+              
+            </div>
+            <div class='row'><script async 
+                src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- frAnnuaire -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-9603593050456448"
+                     data-ad-slot="5109858557"
+                     data-ad-format="auto"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script></div> 
+        </div>
+    </header>
+    <div class="container">
+        <div class=' inscription'>
+            Inscrivez-vous dans notre annuaire, c'est gratuit! <a href="{{path('basic')}}" class="btn btn-dark" role="button" title="référencer votre site">Soumettre un site</a>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+
