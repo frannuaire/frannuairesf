@@ -5,9 +5,9 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * 99q5Tag
+ * Tag
  *
- * @ORM\Table(name="99q5_tag")
+ * @ORM\Table(name="tag")
  * @ORM\Entity
  */
 class Tag

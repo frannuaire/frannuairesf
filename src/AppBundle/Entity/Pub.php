@@ -5,9 +5,9 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * 99q5Pub
+ * Pub
  *
- * @ORM\Table(name="99q5_pub")
+ * @ORM\Table(name="pub")
  * @ORM\Entity
  */
 class Pub

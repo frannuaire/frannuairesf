@@ -5,14 +5,13 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * 99q5Category
+ * Category
  *
- * @ORM\Table(name="99q5_category")
+ * @ORM\Table(name="category")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CategoryRepository")
  */
-class Category
-{
-    
+class Category {
+
     /**
      * @var string
      *
@@ -64,7 +63,7 @@ class Category
     }
 
     function setRoot($root) {
-        $this->root = ($root===null)?0:$root;
+        $this->root = ($root === null) ? 0 : $root;
     }
 
     function setUsable($usable) {
@@ -75,6 +74,4 @@ class Category
         $this->id = $id;
     }
 
-
 }
-

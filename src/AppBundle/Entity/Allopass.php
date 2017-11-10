@@ -5,9 +5,9 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * 99q5Allopass
+ * Allopass
  *
- * @ORM\Table(name="99q5_allopass")
+ * @ORM\Table(name="allopass")
  * @ORM\Entity
  */
 class Allopass

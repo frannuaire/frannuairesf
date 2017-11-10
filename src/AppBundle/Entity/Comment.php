@@ -3,13 +3,12 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 use AppBundle\Entity\Link as Link;
 
 /**
- * 99q5Comment
+ * Comment
  *
- * @ORM\Table(name="99q5_comment")
+ * @ORM\Table(name="comment")
  * @ORM\Entity
  */
 class Comment {
@@ -61,10 +60,11 @@ class Comment {
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Link",  inversedBy="comments")
-     * @ORM\JoinColumn(name="lid", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Link")
+     * @ORM\JoinColumn(name="lid", referencedColumnName="id" , nullable=true)
+     * 
      */
-    private $link;
+     private $link;
 
     public function getLink() {
         return $this->link;
