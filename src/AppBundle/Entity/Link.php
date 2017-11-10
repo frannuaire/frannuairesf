@@ -6,9 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 /**
- * 99q5Link
+ * Link
  *
- * @ORM\Table(name="99q5_link")
+ * @ORM\Table(name="link")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\LinkRepository")
  */
 class Link {
@@ -132,11 +132,11 @@ class Link {
     /**
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="lid")
      */
-    private $comments;
+//    private $comments;
     
      public function __construct()
     {
-        $this->comments = new ArrayCollection();
+   //     $this->comments = new ArrayCollection();
     }
 
     function getUid() {

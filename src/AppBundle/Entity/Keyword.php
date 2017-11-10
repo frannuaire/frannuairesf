@@ -5,9 +5,9 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * 99q5Keyword
+ * Keyword
  *
- * @ORM\Table(name="99q5_keyword")
+ * @ORM\Table(name="keyword")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\KeywordRepository")
  */
 class Keyword

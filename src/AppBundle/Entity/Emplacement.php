@@ -5,9 +5,9 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * 99q5Emplacement
+ * Emplacement
  *
- * @ORM\Table(name="99q5_emplacement")
+ * @ORM\Table(name="emplacement")
  * @ORM\Entity
  */
 class Emplacement

@@ -5,9 +5,9 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * 99q5Feed
+ * Feed
  *
- * @ORM\Table(name="99q5_feed")
+ * @ORM\Table(name="feed")
  * @ORM\Entity
  */
 class Feed
