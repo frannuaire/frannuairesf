@@ -6,9 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * 99q5User
+ * User
  *
- * @ORM\Table(name="99q5_user")
+ * @ORM\Table(name="user")
  * @ORM\Entity
  */
 class User implements UserInterface {
@@ -30,7 +30,7 @@ class User implements UserInterface {
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=100, nullable=false)
+     * @ORM\Column(name="email", type="string", length=255, nullable=false)
      */
     private $email = '';
 

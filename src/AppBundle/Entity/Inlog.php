@@ -5,9 +5,9 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * 99q5Inlog
+ * Inlog
  *
- * @ORM\Table(name="99q5_inlog")
+ * @ORM\Table(name="inlog")
  * @ORM\Entity
  */
 class Inlog

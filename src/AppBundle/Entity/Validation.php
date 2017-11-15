@@ -5,9 +5,9 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * 99q5Validation
+ * Validation
  *
- * @ORM\Table(name="99q5_validation")
+ * @ORM\Table(name="validation")
  * @ORM\Entity
  */
 class Validation

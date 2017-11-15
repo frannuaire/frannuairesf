@@ -22,5 +22,15 @@ class DefaultController extends Controller {
                     'webSites' => $websites,
         ]);
     }
+    
+    /**
+     * @Route("/mention", name="mention")
+     */
+    public function mentionAction(Request $request) {
+        // get website category
 
+        return $this->render('default/mention.html.twig', [
+           'baseUrl'=>$baseurl = $request->getScheme() . '://' . $request->getHttpHost() . $request->getBasePath(),        
+        ]);
+    }
 }

@@ -5,10 +5,13 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
+use ApiPlatform\Core\Annotation\ApiResource;
 /**
- * 99q5Link
- *
- * @ORM\Table(name="99q5_link")
+ * Link
+ * @ApiResource(
+ *     collectionOperations={"get"={"method"="GET"}},
+ *     itemOperations={"get"={"method"="GET"}})
+ * @ORM\Table(name="link")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\LinkRepository")
  */
 class Link {
@@ -129,14 +132,11 @@ class Link {
      */
     private $id;
     
-    /**
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="lid")
-     */
-    private $comments;
+
     
      public function __construct()
     {
-        $this->comments = new ArrayCollection();
+
     }
 
     function getUid() {

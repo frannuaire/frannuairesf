@@ -34,6 +34,7 @@ sucription.email.confirm: 'Confirmer votre mail'
 sucription.save: 'Inscrire mon site'
 sucription.title.placeholder: 'Sera utilisé comme ancre dans l''annuaire'
 sucription.url.placeholder: 'http://www.exemple.com'
+sucription.captcha: 'code de sécurité'
 description.min: 'Vous devez saisir au minimum 1500 Caractères'
 homeadmin: 'Panneau d''aministration'
 admin.dashboard.title: 'Panneau de contrôle'
@@ -46,10 +47,10 @@ admin.link.configuration: Configuration
 admin.link.addon: 'Plug ins'
 admin.link.other: Autres
 admin.link.disconnect: Déconnexion
-admin.link.logout: Se déconnecter
+admin.link.logout: 'Se déconnecter'
 admin.site.action: Action
 admin.site.description: Description
-admin.site.title: Titre du site
+admin.site.title: 'Titre du site'
 admin.buton.refuse: Refuser
 admin.buton.validate: Valider
 link.deleted: 'Lien supprimé avec succè'
@@ -75,3 +76,17 @@ category.placeholder: 'Nom de la catégorie'
 allow.submition: 'Accepter les inscriptions '
 meta.home.description: 'Annuaire généraliste gratuit de site francophone. Annuaire pour référencer vos sites web gratuitement et simplement.'
 login.logon: Connexion
+createdby: Crée par 
+mention: Mentions légales
+mention.title: Mentions légales
+mention.description: 'Développeur d''application web'
+mention.name: Kévin FERRANDON
+address: Adresse
+mention.address: 25 rue du sénateur Jacques Gautron
+mention.address.city: Sours
+mention.address.postalcode: 28630
+mention.address.region: Centre Val de Loir
+Phone: Téléphone
+mention.address.phone: +33613375437
+mention.image.url: https://pbs.twimg.com/profile_images/1622433760/icon-frannuaire_400x400.png
+mention.pricerange: Gratuit

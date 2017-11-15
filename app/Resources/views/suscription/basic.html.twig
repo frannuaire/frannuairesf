@@ -5,9 +5,9 @@
         <h1>{{'suscription.basic'|trans}}</h1>
     </div>
     <div class="container">
-
-        {{ form_start(form) }}
         {{ form_errors(form) }}
+        {{ form_start(form) }}
+
         <div class="form-group">
             {{ form_row(form.name) }}
         </div>
@@ -25,6 +25,9 @@
         </div>
         <div class="form-group">
             {{ form_row(form.description) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(form.captcha) }}
         </div>
         <div class="form-group">
             {{ form_row(form.save) }}
