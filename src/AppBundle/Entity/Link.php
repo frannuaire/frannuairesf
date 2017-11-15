@@ -5,9 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
+use ApiPlatform\Core\Annotation\ApiResource;
 /**
  * Link
- *
+ * @ApiResource(
+ *     collectionOperations={"get"={"method"="GET"}},
+ *     itemOperations={"get"={"method"="GET"}})
  * @ORM\Table(name="link")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\LinkRepository")
  */

@@ -71,4 +71,7 @@ swiftmailer:
     
 gregwar_captcha: ~
 
+api_platform:
+    version: '0.0.1'
+    title: 'Frannuaire api website'
 

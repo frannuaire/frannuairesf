@@ -18,6 +18,7 @@ class AppKernel extends Kernel {
             new AppBundle\AppBundle(),
             new CommentBundle\CommentBundle(),
             new Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
+            new ApiPlatform\Core\Bridge\Symfony\Bundle\ApiPlatformBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
