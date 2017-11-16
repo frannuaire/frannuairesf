@@ -27,3 +27,8 @@ php bin/console s:r
 ```
 
 Change style.css and adapt the template part.
+
+You can use console to add default category (for restaurant directory, lawyer...) use --help
+```
+php bin/console app:create:category restaurant
+```
