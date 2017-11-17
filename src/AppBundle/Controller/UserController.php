@@ -20,7 +20,7 @@ class UserController extends Controller
     $user  = $this->getUser()->getUsername();
    // die(var_dump($user));
         // replace this example code with whatever you need
-          return $this->render('member/board.html.twig', [
+          return $this->render('member/index.html.twig', [
             
         ]);
         

@@ -31,6 +31,12 @@ class SuscriptionController extends Controller {
 
         $link->setVote(0);
         $link->setRatingValue(0);
+        $usr = $this->get('security.token_storage')->getToken()->getUser();
+       if($usr!="anon."){
+        $link->setUid($usr->getId());
+       }else{
+            $link->setUid(0);
+       }
         $form = $this->createFormBuilder($link)
                 ->add('category', ChoiceType::class, array(
                     'choices' => $this->getCategory(),

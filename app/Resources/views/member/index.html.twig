@@ -1,9 +1,21 @@
 {% extends 'bootstrap.html.twig' %}
 
 {% block body %}
- <header class='header'>
-      
- </header>
+    <header class='header'>
+        <div class="container text-center" >
+            <h1 class="text-center">{{'admin.dashboard.title'|trans}}</h1><hr class="text-center"/>
+            {% include 'member/board.html.twig' %}
+
+        </div>
+    </div>
+</header>
+
+<div class="container">
+
+
+</div>  
+
+
 
 {% endblock %}
 

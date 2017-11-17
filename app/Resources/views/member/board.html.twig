@@ -1,10 +1,20 @@
-{% extends 'bootstrap.html.twig' %}
-
-{% block body %}
-
-<div class="container">
-test
+<div class='row rowAdminBoarder'> 
+    <div class="col">
+        <a href="{{path('userlink')}}" class='linkAdmin'>
+            <img class="icon" src="{{ asset('img/Entypo+/link.svg') }}" alt="Edit pictogram">
+            <br />
+            {{ 'member.link.link'|trans}}
+        </a>
+    </div>
+    <div class="col">
+        <a class="linkAdmin" href="{{ path('fos_user_security_logout') }}">
+            <img class="icon" src="{{ asset('img/Entypo+/log-out.svg') }}" alt="disconnect">
+            <br />
+            {{'admin.link.logout'|trans}}
+        </a>
+    </div>
 </div>
-{% endblock %}
+
+
 
 

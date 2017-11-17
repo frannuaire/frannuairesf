@@ -73,7 +73,7 @@ h1{color:#fff;padding-top: 10px;}
 }
 .premium{
     background-color: rgba(50,200,50,0.4);
-        font-size: 1em;
+    font-size: 1em;
 }
 .keyword{
     color:#fff;
@@ -83,23 +83,23 @@ h1{color:#fff;padding-top: 10px;}
     margin: 2px 3px 3px;
 }
 .trach{
-     background-color: #cc5555; 
+    background-color: #cc5555; 
 }
 .white{
-     background-color: #fff; 
+    background-color: #fff; 
 }
 
 .flash-notice{
     background-color: rgba(250,250,250,0.5);
 }
 .td-odd{
- background-color: rgba(250,90,0,0.8);   
+    background-color: rgba(250,90,0,0.8);   
 }
 .td-even{
- background-color: rgba(250,150,0,0.8);   
+    background-color: rgba(250,150,0,0.8);   
 }
 .headBoard{
-     font-weight: 900;
+    font-weight: 900;
 }
 
 /**
@@ -119,9 +119,15 @@ pagination
 .pagination span>a:hover:not(.active) {background-color: #ff8100;}
 
 .pagination span.current{
-      background-color: white;
+    background-color: white;
     color:  #000;  
-        float: left;
+    float: left;
     padding: 8px 16px;
     text-decoration: none;
+}
+
+footer{
+    position:fixed;
+    bottom:0px;
+
 }
