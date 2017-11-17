@@ -93,7 +93,7 @@ class SuscriptionController extends Controller {
         if ($form->isSubmitted() && $form->isValid()) {
             $this->validForm($form);
             $this->addFlash(
-                    'notice', 'Your link were saved!'
+                    'notice', 'Your link was saved!'
             );
             return $this->redirectToRoute('homepage');
         }
