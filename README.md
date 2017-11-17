@@ -32,3 +32,6 @@ You can use console to add default category (for restaurant directory, lawyer...
 ```
 php bin/console app:create:category restaurant
 ```
+
+create user as fosUserBundle documentation http://symfony.com/doc/2.0/bundles/FOSUserBundle/command_line_tools.html and promote it as ROLE_ADMIN
+
