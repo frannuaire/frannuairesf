@@ -1,0 +1,46 @@
+{% extends 'bootstrap.html.twig' %}
+
+{% block body %}
+    <header class='header'>
+        <div class="container text-center" >
+            <h1 class="text-center">{{'member.link'|trans}}</h1><hr class="text-center"/>
+            {% include 'member/board.html.twig' %}
+            {% if message is defined and message is not empty  %}
+                <div class='row'> 
+                    <div class="alert alert-success" role="alert">
+                        {{message}}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </header>
+
+    <div class="container adminBoarder">
+      
+            {{ form_errors(form) }}
+            {{ form_start(form) }}
+
+            <div class="form-group">
+                {{ form_row(form.name) }}
+            </div>
+            <div class="form-group">
+                {{ form_row(form.url) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_row(form.image) }}
+            </div>
+            <div class="form-group">
+                {{ form_row(form.description) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_row(form.save) }}
+            </div>
+
+            {{ form_end(form) }}
+
+
+    </div>
+
+{% endblock %}
