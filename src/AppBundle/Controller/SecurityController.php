@@ -11,7 +11,7 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 class SecurityController extends Controller {
 
     /**
-     * @Route("/login", name="login")
+     * @Route("/login2", name="login2")
      */
     public function loginAction(Request $request, AuthenticationUtils $authUtils) {
 
@@ -30,7 +30,7 @@ class SecurityController extends Controller {
 
 
     /**
-     * @Route("/logout/", name="logout")
+     * @Route("/logout2/", name="logout2")
      */
     public function logoutAction() {
         

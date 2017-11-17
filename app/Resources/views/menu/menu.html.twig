@@ -1,7 +1,7 @@
-{% if is_granted('ROLE_USER')   %}
-    {% include 'menu/menuLogUser.html.twig'  %}
-{% elseif is_granted('ROLE_ADMIN') %}
+{% if is_granted('ROLE_ADMIN') %}
     {% include 'menu/menuAdmin.html.twig'  %}    
+{% elseif is_granted('ROLE_USER')   %}
+    {% include 'menu/menuLogUser.html.twig'  %}
 {% else  %}
     {% include 'menu/menuUnlog.html.twig'  %} 
 {% endif %}

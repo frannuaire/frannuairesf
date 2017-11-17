@@ -115,7 +115,17 @@ class Link {
      * @ORM\Column(name="email", type="string", length=255, nullable=false)
      */
     private $email;
+    
+    /**
+     *
+     * @var type float
+     * 
+     * @ORM\Column(name="ratingvalue", type="float", nullable=false)
+     */
+    private $ratingValue = 0;
 
+
+    
     /**
      * @var \DateTime
      *
@@ -138,7 +148,13 @@ class Link {
     {
 
     }
+    function getRatingValue(): float {
+        return $this->ratingValue;
+    }
 
+    function setRatingValue(float $ratingValue) {
+        $this->ratingValue = $ratingValue;
+    }
     function getUid() {
         return $this->uid;
     }

@@ -29,7 +29,8 @@ class SuscriptionController extends Controller {
 
         $link = new Link();
 
-
+        $link->setVote(0);
+        $link->setRatingValue(0);
         $form = $this->createFormBuilder($link)
                 ->add('category', ChoiceType::class, array(
                     'choices' => $this->getCategory(),
@@ -75,7 +76,7 @@ class SuscriptionController extends Controller {
                 ])
                 ->add('captcha', CaptchaType::class, array(
                     'label' => $this->get('translator')->trans('sucription.captcha'),
-                     'attr' => array('class' => 'form-control')
+                    'attr' => array('class' => 'form-control')
                 ))
                 ->add('save', SubmitType::class, array('label' => $this->get('translator')->trans('sucription.save'),
                     'attr' => array('class' => 'btn btn-dark btn-outline-warning')))

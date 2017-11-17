@@ -24,7 +24,7 @@ class CategoryManager {
     public function addCategory(\AppBundle\Entity\Category $category) {
 
         if (null === $category) {
-            throw new Exception('Miss Category');
+            throw new Exception('Missing Category');
         }
         $this->em->persist($category);
         $this->em->flush();
