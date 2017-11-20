@@ -3,16 +3,16 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+           
+            <li class="nav-item {% if app.request.get('_route') == 'homepage' %} active {% endif %}">
                 <a class="nav-link" href="{{ path('homepage') }}">{{'menu.home'|trans}}</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item {% if app.request.attributes.get('_route') == 'board' %} active {% endif %}">
                 <a class="nav-link" href="{{ path('board') }}">{{'menu.dashboard'|trans}}</a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item {% if app.request.get('_route') == 'basic' %} active {% endif %} ">
                 <a class="nav-link" href="{{ path('basic') }}">{{'menu.suscription.basic'|trans}}</a>
             </li>
             <li class="nav-item">
@@ -20,7 +20,7 @@
                     {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
                 </a>
             </li>
-        </ul>
+        </ul> 
         <form class="form-inline my-2 my-lg-0" name='search' action="{{path('search')}}">
             <input class="form-control mr-sm-2" name='keywords' id='keywords' type="text" placeholder="{{'search'|trans}}" aria-label="{{'search'|trans}}">
             <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">{{'search'|trans}}</button>
