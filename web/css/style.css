@@ -126,6 +126,9 @@ pagination
     text-decoration: none;
 }
 
+header{
+    overflow: auto; 
+}
 footer{
     position:fixed;
     bottom:0px;

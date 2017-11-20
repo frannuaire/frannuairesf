@@ -23,6 +23,7 @@ use \Symfony\Component\Form\Extension\Core\Type\EmailType;
 use \Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use \Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 
 /**
  * Description of MemberController
@@ -66,7 +67,7 @@ class MemberController extends Controller {
                         'placeholder' => $this->get('translator')->trans('sucription.url.placeholder'),
                         'readonly'=>'readonly')
                 ))
-                ->add('description', TextareaType::class, array(
+                ->add('description', CKEditorType::class, array(
                     'label' => $this->get('translator')->trans('sucription.description'),
                     'attr' => array('class' => 'form-control')
                 ))
