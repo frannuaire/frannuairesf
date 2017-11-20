@@ -10,7 +10,8 @@ use ApiPlatform\Core\Annotation\ApiResource;
  * Link
  * @ApiResource(
  *     collectionOperations={"get"={"method"="GET"}},
- *     itemOperations={"get"={"method"="GET"}})
+ *     itemOperations={"get"={"method"="GET"}, "put"={"method"="PUT", "path"="/links/hits/{id}/update"}}
+ * )
  * @ORM\Table(name="link")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\LinkRepository")
  */

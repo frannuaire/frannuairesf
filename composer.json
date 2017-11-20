@@ -25,6 +25,7 @@
         "api-platform/core": "^2.1",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/orm": "^2.5",
+        "egeloen/ckeditor-bundle": "^6.0",
         "friendsofsymfony/user-bundle": "^2.0",
         "gregwar/captcha-bundle": "^2.0",
         "incenteev/composer-parameter-handler": "^2.0",

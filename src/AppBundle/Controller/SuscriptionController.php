@@ -19,6 +19,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use \Symfony\Component\Validator\Constraints\DateTime;
 use Symfony\Component\Form\FormError;
 use Gregwar\CaptchaBundle\Type\CaptchaType;
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 
 class SuscriptionController extends Controller {
 
@@ -34,6 +35,7 @@ class SuscriptionController extends Controller {
         $usr = $this->get('security.token_storage')->getToken()->getUser();
        if($usr!="anon."){
         $link->setUid($usr->getId());
+        $link->setEmail($usr->getEmail());
        }else{
             $link->setUid(0);
        }
@@ -52,7 +54,7 @@ class SuscriptionController extends Controller {
                     'label' => $this->get('translator')->trans('sucription.url'),
                     'attr' => array('class' => 'form-control', 'placeholder' => $this->get('translator')->trans('sucription.url.placeholder'))
                 ))
-                ->add('description', TextareaType::class, array(
+                ->add('description', CKEditorType::class, array(
                     'label' => $this->get('translator')->trans('sucription.description'),
                     'attr' => array('class' => 'form-control')
                 ))

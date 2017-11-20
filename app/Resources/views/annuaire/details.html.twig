@@ -7,9 +7,10 @@
 {% endblock %}
 {% block body %}
     <!-- Header details -->
-    <header class='header'>
+    <header class='header' >
         <div class="container">
-            <div class='row'>
+            <div class='row' ng-controller="hitsController">
+            
                 {% if webSites is defined %}      
 
                     <div class='row'>
@@ -30,29 +31,20 @@
                         </div>
                     </div>
 
-<script type="application/ld+json">
-{
-    "@context": "http://schema.org",
-    "@type": "WebSite",
-    "url": "{{webSites.url}}"
-}
-</script>
+                    <script type="application/ld+json">
+                        {
+                        "@context": "http://schema.org",
+                        "@type": "WebSite",
+                        "url": "{{webSites.url}}"
+                        }
+                    </script>
 
-{% endif%}   
+                {% endif%}   
 
             </div>
-            <div class='row'><script async 
-                src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                <!-- frAnnuaire -->
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-9603593050456448"
-                     data-ad-slot="5109858557"
-                     data-ad-format="auto"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script></div> 
-        </div>
+            <div class='row'>
+
+            </div>
     </header>
     <!-- End Header details -->
 
@@ -95,4 +87,11 @@
             </div>
         </div>
     </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    
+ 
+    <script href="{{ asset('js/hits.js') }}"></script>
 {% endblock %}

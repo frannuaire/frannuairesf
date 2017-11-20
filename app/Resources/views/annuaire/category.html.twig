@@ -3,8 +3,7 @@
     <title>{{'home.title'|trans}} - {{selectCategory.name}}</title>
     {% if textCategory.catexText is defined and textCategory.catexText is not empty %} 
         <meta name="description" content=" {{textCategory.catexText|length > 50 ? textCategory.catexText|slice(0, 160) ~ '...' : textCategory.catexText }}" />
-    {% else %}
-        {{'textCategoryEmpty'|trans}}   
+    {% else %}  
         <meta name="description" content="{{selectCategory.name}} - {{'textCategoryEmpty'|trans}}   " />
     {% endif %}
     
