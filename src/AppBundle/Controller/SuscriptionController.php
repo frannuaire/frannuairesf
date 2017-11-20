@@ -34,6 +34,7 @@ class SuscriptionController extends Controller {
         $usr = $this->get('security.token_storage')->getToken()->getUser();
        if($usr!="anon."){
         $link->setUid($usr->getId());
+        $link->setEmail($usr->getEmail());
        }else{
             $link->setUid(0);
        }

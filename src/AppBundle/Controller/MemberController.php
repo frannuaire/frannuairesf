@@ -39,7 +39,7 @@ class MemberController extends Controller {
 
         $websites = $this->getDoctrine()
                 ->getRepository(Link::class)
-                ->findBy(array('uid' => $usr->getId()), array('date' => 'desc', 'prio' => 'desc'), 4);
+                ->findBy(array('uid' => $usr->getId(), 'state'=>Link::STATE_VALID), array('date' => 'desc', 'prio' => 'desc'), 4);
         return $this->render('member/userlink.html.twig', [
                     'webSites' => $websites,
         ]);
@@ -53,7 +53,7 @@ class MemberController extends Controller {
 
         $websites = $this->getDoctrine()
                 ->getRepository(Link::class)
-                ->findOneBy(array('uid' => $usr->getId(), 'id' => $id), array('date' => 'desc', 'prio' => 'desc'), 4);
+                ->findOneBy(array('uid' => $usr->getId(), 'id' => $id, 'state'=>Link::STATE_VALID), array('date' => 'desc', 'prio' => 'desc'), 4);
      //   die(var_dump($websites));
            $form = $this->createFormBuilder($websites)
                 ->add('name', TextType::class, array(
