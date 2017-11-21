@@ -10,21 +10,29 @@
     <header class='header' >
         <div class="container">
             <div class='row' ng-controller="hitsController">
-            
+
                 {% if webSites is defined %}      
 
-                    <div class='row'>
+                    <div class='row' >
                         <div class='col-lg-2'>
+                            <div class="row">
                             {% if webSites.image is not empty %}
                                 <div class='col'><img width='150px;' src='{{webSites.image}}' alt='thumb {{webSites.name}}' class="img-thumbnail img-fluid " /></div>
                                 {% else %}
                                 <div class='col'><img width='150px;' src='{{ asset('img/no_image_available.svg')}}' alt='default thumb' class="img-thumbnail img-fluid " /></div>
                                 {% endif %}
+                            </div>
+                            <div class="row rating">
+                                <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                            </div>
                         </div>
 
-                        <div class='col' style='scroll:auto;'>
-                            <h2><a href='{{webSites.url}}' target='_blank' title='{{webSites.description|length > 50 ? (webSites.description[:50] ~ '…') : webSites.description }}'>{{webSites.name}}</a></h2> 
-                            <div>
+                        <div class='col' >
+                            <div class='row-fluid'>
+                                <h2><a href='{{webSites.url}}' id='hit'  target='_blank' title='{{webSites.description|length > 50 ? (webSites.description[:50] ~ '…') : webSites.description }}'>{{webSites.name}}</a>
+                                </h2> 
+                            </div>
+                            <div class='col'>
                                 {{webSites.description|raw }}
                             </div>
 
@@ -91,7 +99,42 @@
 {% endblock %}
 
 {% block javascripts %}
-    
- 
-    <script href="{{ asset('js/hits.js') }}"></script>
+    <script>
+        $("#hit").click(function () {
+            $.get("{{ path('hits-update', {'id':webSites.id}) }}", function (data) {
+                console.log(data);
+            });
+        });
+    </script>
+
+    <style>.rating > span:hover:before {
+            content: "\2605";
+            position: absolute;
+        }
+        .rating {
+            unicode-bidi: bidi-override;
+            direction: rtl;
+        }
+        .rating > span:hover:before,
+        .rating > span:hover ~ span:before {
+            content: "\2605";
+            position: absolute;
+        }
+        .rating {
+            unicode-bidi: bidi-override;
+            direction: rtl;
+            font-size: 2em;
+        }
+        .rating > span {
+            display: inline-block;
+            position: relative;
+            width: 1.1em;
+        }
+        .rating > span:hover:before,
+        .rating > span:hover ~ span:before {
+            content: "\2605";
+            position: absolute;
+            color:#ff0;
+        }
+    </style>
 {% endblock %}
