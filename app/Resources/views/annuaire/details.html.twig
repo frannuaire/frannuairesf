@@ -16,14 +16,17 @@
                     <div class='row' >
                         <div class='col-lg-2'>
                             <div class="row">
-                            {% if webSites.image is not empty %}
-                                <div class='col'><img width='150px;' src='{{webSites.image}}' alt='thumb {{webSites.name}}' class="img-thumbnail img-fluid " /></div>
-                                {% else %}
-                                <div class='col'><img width='150px;' src='{{ asset('img/no_image_available.svg')}}' alt='default thumb' class="img-thumbnail img-fluid " /></div>
-                                {% endif %}
+                                {% if webSites.image is not empty %}
+                                    <div class='col'><img width='150px;' src='{{webSites.image}}' alt='thumb {{webSites.name}}' class="img-thumbnail img-fluid " /></div>
+                                    {% else %}
+                                    <div class='col'><img width='150px;' src='{{ asset('img/no_image_available.svg')}}' alt='default thumb' class="img-thumbnail img-fluid " /></div>
+                                    {% endif %}
                             </div>
+                            {% set avgRating = webSites.ratingvalue / webSites.vote %}
+                                    Note moyenne : {{avgRating}} / 5
                             <div class="row rating">
-                                <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                
+                                <span class="rate" data-rating='5'>☆</span><span class="rate" data-rating='4'>☆</span><span class="rate" data-rating='3'>☆</span><span class="rate" data-rating='2'>☆</span><span class="rate" data-rating='1'>☆</span>
                             </div>
                         </div>
 
@@ -103,6 +106,14 @@
         $("#hit").click(function () {
             $.get("{{ path('hits-update', {'id':webSites.id}) }}", function (data) {
                 console.log(data);
+            });
+        });
+        $(".rate").click(function () {
+            var ratingValue = $(this).data("rating");
+   
+            $.post("{{ path('rating-update', {'id':webSites.id} ) }}", {rating: ratingValue}).done(function (data){
+                        console.log(data);
+                
             });
         });
     </script>

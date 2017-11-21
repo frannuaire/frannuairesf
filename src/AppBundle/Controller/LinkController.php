@@ -47,4 +47,27 @@ class LinkController extends Controller {
         }
     }
 
+        /**
+     * @Route("/api/links/rating/update/{id}", name="rating-update")
+     */
+    public function ratingUpdateAction(Request $request, int $id) {
+$rating = $request->request->get('rating');
+
+        $website = $this->getDoctrine()
+                ->getRepository(Link::class)
+                ->findOneBy(array('id' => $id));
+        //  var_dump($website);die;
+        if ($website instanceof Link) {
+            $website->setVote($website->getVote() + 1);
+            $website->setRatingValue($website->getRatingValue()+$rating);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($website);
+            $em->flush();
+            $serializedEntity = $this->container->get('serializer')->serialize($website, 'json');
+
+            return new Response($serializedEntity);
+        } else {
+            return new JsonResponse('Oh oh something wrong happened', Response::HTTP_BAD_REQUEST);
+        }
+    }
 }
