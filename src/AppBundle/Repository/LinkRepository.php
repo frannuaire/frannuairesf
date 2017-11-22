@@ -1,19 +1,18 @@
 <?php
 
-
 namespace AppBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
-
 
 /**
  * Description of LinkRepository
  *
  * @author kferrandon
  */
-class LinkRepository extends EntityRepository{
-    protected $lastQuery;  
-    
+class LinkRepository extends EntityRepository {
+
+    protected $lastQuery;
+
     /**
      * 
      * @param string $keywords
@@ -23,7 +22,7 @@ class LinkRepository extends EntityRepository{
 
         $qb = $this->createQueryBuilder('l');
         $query = $qb->where(
-                                $qb->expr()->like('l.name', ':keyword')
+                        $qb->expr()->like('l.name', ':keyword')
                 )
                 ->orWhere($qb->expr()->like('l.url', ':keydesc'))
                 ->setParameter('keyword', '%' . $keywords . '%')
@@ -32,8 +31,8 @@ class LinkRepository extends EntityRepository{
         $this->setLastQuery($query);
         return $query->getResult();
     }
-    
-        /**
+
+    /**
      * use this after each select query
      * @param Query $lastQuery
      */
@@ -49,4 +48,5 @@ class LinkRepository extends EntityRepository{
     public function countLastResultElements(): int {
         return count($this->lastResult->getScalarResult());
     }
+
 }
