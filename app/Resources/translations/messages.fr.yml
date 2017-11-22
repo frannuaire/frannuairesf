@@ -95,5 +95,6 @@ member.dashboard.title: Tableau de bord
 rating.thanks: 'Merci d''avoir voté pour ce site'
 rating.alreadydid: 'Il semblerait que vous ayez déja voté'
 register.post: Inscrivez-vous pour commenter le site
+register: Créer un compte
 rating.avg: 'Note moyenne:' 
 rating.name: 'Vote :'
