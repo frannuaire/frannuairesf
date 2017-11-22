@@ -21,11 +21,18 @@
                                     {% else %}
                                     <div class='col'><img width='150px;' src='{{ asset('img/no_image_available.svg')}}' alt='default thumb' class="img-thumbnail img-fluid " /></div>
                                     {% endif %}
-                            </div>
-                            {% set avgRating = webSites.ratingvalue / webSites.vote %}
-                            Note moyenne : {{avgRating|round(2, 'floor')}} / 5
-                            <div class="row rating">
 
+                            </div>
+                            {% if webSites.vote > 0 %}
+                                {% set avgRating = webSites.ratingvalue / webSites.vote %}
+                            {% else %}
+                                {% set avgRating = 0 %}
+                            {% endif %} 
+                            {{'rating.avg'|trans}} {{avgRating|round(2, 'floor')}} / 5
+                            <br />
+                            {{'rating.name'|trans}} {{webSites.vote}}
+
+                            <div class="row rating">
                                 <span class="rate" data-rating='5'>☆</span><span class="rate" data-rating='4'>☆</span><span class="rate" data-rating='3'>☆</span><span class="rate" data-rating='2'>☆</span><span class="rate" data-rating='1'>☆</span>
                             </div>
                         </div>
@@ -47,10 +54,10 @@
                         "@context": "http://schema.org",
                         "@type": "WebSite",
                         "aggregateRating": {
-                            "@type": "AggregateRating",
-                            "ratingValue": "{{avgRating}}",
-                            "reviewCount": "{{webSites.vote}}"
-                          },
+                        "@type": "AggregateRating",
+                        "ratingValue": "{{avgRating}}",
+                        "reviewCount": "{{webSites.vote}}"
+                        },
                         "url": "{{webSites.url}}"
                         }
                     </script>
@@ -75,7 +82,7 @@
             <div class="collapse multi-collapse" id="comments">
                 <div class="card card-body"> 
                     {% if comments is empty %}
-                        {{'nocomments'|trans}}
+                        {{'nocomments'|trans}} -  <a href="{{path('fos_user_registration_register')}}">{{'register.post'|trans}}</a>
                     {% else %}
                         {% for comment in comments %}
                             <div class='row'>
@@ -117,8 +124,8 @@
             var ratingValue = $(this).data("rating");
             $(this).css('color:#ff0;');
             $.post("{{ path('rating-update', {'id':webSites.id} ) }}", {rating: ratingValue}).done(function (data) {
-                alert("{{'rating.thanks'|trans|raw}}");
-
+                var val = JSON.parse(data);
+                alert(val.message);
             });
         });
     </script>
