@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Link;
 use AppBundle\Entity\Category;
+use AppBundle\Entity\Localbusiness;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -33,29 +34,29 @@ class SuscriptionController extends Controller {
         $link->setVote(0);
         $link->setRatingValue(0);
         $usr = $this->get('security.token_storage')->getToken()->getUser();
-       if($usr!="anon."){
-        $link->setUid($usr->getId());
-        $link->setEmail($usr->getEmail());
-       }else{
+        if ($usr != "anon.") {
+            $link->setUid($usr->getId());
+            $link->setEmail($usr->getEmail());
+        } else {
             $link->setUid(0);
-       }
+        }
         $form = $this->createFormBuilder($link)
                 ->add('category', ChoiceType::class, array(
                     'choices' => $this->getCategory(),
-                    'label' => $this->get('translator')->trans('sucription.category'),
+                    'label' => $this->get('translator')->trans('suscription.category'),
                     'attr' => array('class' => 'form-control'),
                     'required' => true,
                 ))
                 ->add('name', TextType::class, array(
-                    'label' => $this->get('translator')->trans('sucription.name'),
-                    'attr' => array('class' => 'form-control', 'placeholder' => $this->get('translator')->trans('sucription.title.placeholder'))
+                    'label' => $this->get('translator')->trans('suscription.name'),
+                    'attr' => array('class' => 'form-control', 'placeholder' => $this->get('translator')->trans('suscription.title.placeholder'))
                 ))
                 ->add('url', UrlType::class, array(
-                    'label' => $this->get('translator')->trans('sucription.url'),
-                    'attr' => array('class' => 'form-control', 'placeholder' => $this->get('translator')->trans('sucription.url.placeholder'))
+                    'label' => $this->get('translator')->trans('suscription.url'),
+                    'attr' => array('class' => 'form-control', 'placeholder' => $this->get('translator')->trans('suscription.url.placeholder'))
                 ))
                 ->add('description', CKEditorType::class, array(
-                    'label' => $this->get('translator')->trans('sucription.description'),
+                    'label' => $this->get('translator')->trans('suscription.description'),
                     'attr' => array('class' => 'form-control')
                 ))
                 ->add('email', RepeatedType::class, array(
@@ -63,14 +64,14 @@ class SuscriptionController extends Controller {
                     'invalid_message' => 'The mail fields must match.',
                     'options' => array('attr' => array('class' => 'form-control')),
                     'required' => true,
-                    'first_options' => array('label' => $this->get('translator')->trans('sucription.email')),
-                    'second_options' => array('label' => $this->get('translator')->trans('sucription.email.confirm')),
+                    'first_options' => array('label' => $this->get('translator')->trans('suscription.email')),
+                    'second_options' => array('label' => $this->get('translator')->trans('suscription.email.confirm')),
                 ))
                 ->add('image', UrlType::class, array(
-                    'label' => $this->get('translator')->trans('sucription.image'),
+                    'label' => $this->get('translator')->trans('suscription.image'),
                     'attr' => array('class' => 'form-control',
-                        'placeholder' => $this->get('translator')->trans('sucription.image.placeholder'),
-                        'title' => $this->get('translator')->trans('sucription.image.title')
+                        'placeholder' => $this->get('translator')->trans('suscription.image.placeholder'),
+                        'title' => $this->get('translator')->trans('suscription.image.title')
                     ),
                     'required' => false,
                 ))
@@ -83,21 +84,22 @@ class SuscriptionController extends Controller {
                     'date_format' => 'dd/MM/yyyy'
                 ])
                 ->add('captcha', CaptchaType::class, array(
-                    'label' => $this->get('translator')->trans('sucription.captcha'),
+                    'label' => $this->get('translator')->trans('suscription.captcha'),
                     'attr' => array('class' => 'form-control')
                 ))
-                ->add('save', SubmitType::class, array('label' => $this->get('translator')->trans('sucription.save'),
+                ->add('save', SubmitType::class, array('label' => $this->get('translator')->trans('suscription.save'),
                     'attr' => array('class' => 'btn btn-dark btn-outline-warning')))
                 ->getForm();
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->validForm($form);
             $this->addFlash(
                     'notice', 'Your link was saved!'
             );
-            return $this->redirectToRoute('homepage');
+            $link = $this->validForm($form);
+
+            return $this->redirectToRoute('addbusiness', array('lid' => $link->getId()));
         }
 
         return $this->render('suscription/basic.html.twig', array(
@@ -107,7 +109,7 @@ class SuscriptionController extends Controller {
 
     private function validForm($form) {
         $link = $form->getData();
-        if (strlen($link->getDescription()) < 1500) {
+        if (strlen($link->getDescription()) < Link::MIN_CARACT_VALIDATOR) {
             $form->addError(new FormError($this->get('translator')->trans('description.min')));
             return $this->render('suscription/basic.html.twig', array(
                         'form' => $form->createView(),
@@ -119,7 +121,8 @@ class SuscriptionController extends Controller {
         $em->persist($link);
         $em->flush();
 
-        return $this->redirectToRoute('homepage');
+        return $link;
+        //  return $this->redirectToRoute('homepage');
     }
 
     /**
@@ -137,6 +140,77 @@ class SuscriptionController extends Controller {
         }
 
         return $catUnit;
+    }
+
+    /**
+     * @Route("/suscription-business/{lid}", name="addbusiness")
+     */
+    public function addbusinessAction(Request $request, $lid) {
+        $localBusiness = new Localbusiness();
+
+        $link = $this->getDoctrine()
+                ->getRepository(Link::class)
+                ->findOneBy(array('id' => $lid));
+
+
+        $localBusiness->setLid($link->getId());
+
+        $form = $this->createFormBuilder($localBusiness)
+                // ->add('lid', HiddenType::class)
+                ->add('name', TextType::class, array(
+                    'label' => $this->get('translator')->trans('suscription.business.name'),
+                    'attr' => array('class' => 'form-control', 'placeholder' => $this->get('translator')->trans('suscription.title.placeholder'))
+                ))
+                ->add('description', CKEditorType::class, array(
+                    'label' => $this->get('translator')->trans('suscription.business.description'),
+                    'attr' => array('class' => 'form-control')
+                ))
+                ->add('email', EmailType::class, array(
+                    'attr' => array('class' => 'form-control'),
+                    'required' => false,
+                    'label' => $this->get('translator')->trans('suscription.email')
+                ))
+                ->add('telephone', TextType::class, array(
+                    'label' => $this->get('translator')->trans('suscription.business.telephone'),
+                    'attr' => array('class' => 'form-control', 'placeholder' => $this->get('translator')->trans('+336xxxxxx'))
+                ))
+                ->add('streetaddress', TextType::class, array(
+                    'label' => $this->get('translator')->trans('suscription.business.streetaddress'),
+                    'attr' => array('class' => 'form-control', 'placeholder' => $this->get('translator')->trans('suscription.streetaddress.placeholder'))
+                ))
+                ->add('postalcode', TextType::class, array(
+                    'label' => $this->get('translator')->trans('suscription.business.postalcode'),
+                    'attr' => array('class' => 'form-control', 'placeholder' => $this->get('translator')->trans('suscription.postalcode.placeholder'))
+                ))
+                ->add('addresslocality', TextType::class, array(
+                    'label' => $this->get('translator')->trans('suscription.business.adresselocality'),
+                    'attr' => array('class' => 'form-control', 'placeholder' => $this->get('translator')->trans('suscription.adresselocality.placeholder'))
+                ))
+                ->add('addresscountry', TextType::class, array(
+                    'label' => $this->get('translator')->trans('suscription.business.addresscountry'),
+                    'attr' => array('class' => 'form-control', 'placeholder' => $this->get('translator')->trans('suscription.addresscountry.placeholder'))
+                ))
+                ->add('addressregion', TextType::class, array(
+                    'label' => $this->get('translator')->trans('suscription.business.addressregion'),
+                    'attr' => array('class' => 'form-control', 'placeholder' => $this->get('translator')->trans('suscription.addressregion.placeholder'))
+                ))
+                ->add('save', SubmitType::class, array('label' => $this->get('translator')->trans('suscription.save'),
+                    'attr' => array('class' => 'btn btn-dark btn-outline-warning')))
+                ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->validLocalBusiness($form);
+            $this->addFlash(
+                    'notice', 'Your link was saved!'
+            );
+            return $this->redirectToRoute('homepage');
+        }
+
+        return $this->render('suscription/business.html.twig', array(
+                    'form' => $form->createView(),
+        ));
     }
 
 }

@@ -21,20 +21,35 @@ more: 'd''informations sur ce site'
 Comments: Commentaires
 rss: RSS
 commentof: 'Commentaire du'
-sucription.suscription.basic: 'Inscription Basique'
-sucription.name: Titre
-sucription.url: Url
+suscription.suscription.basic: 'Inscription Basique'
+suscription.name: Titre
+suscription.url: Url
 suscription.basic: 'Inscription Basique'
-sucription.description: 'Description de votre site (1500 caractères min)'
-sucription.image: 'Url du thumbnail de votre site préférence 120*90'
-sucription.image.placeholder: 'Url de votre image ou logo'
-sucription.category: Catégorie
-sucription.email: 'Votre mail'
-sucription.email.confirm: 'Confirmer votre mail'
-sucription.save: 'Inscrire mon site'
-sucription.title.placeholder: 'Sera utilisé comme ancre dans l''annuaire'
-sucription.url.placeholder: 'http://www.exemple.com'
-sucription.captcha: 'code de sécurité'
+suscription.description: 'Description de votre site (1500 caractères min)'
+suscription.image: 'Url du thumbnail de votre site préférence 120*90'
+suscription.image.placeholder: 'Url de votre image ou logo'
+suscription.category: Catégorie
+suscription.email: 'Votre mail'
+suscription.email.confirm: 'Confirmer votre mail'
+suscription.save: 'Inscrire mon site'
+suscription.title.placeholder: 'Sera utilisé comme ancre dans l''annuaire'
+suscription.url.placeholder: 'http://www.exemple.com'
+suscription.captcha: 'code de sécurité'
+suscription.adv: 'Inscrivez-vous dans notre annuaire, c''est gratuit!'
+suscription.business: 'Inscription de votre entreprise'
+suscription.business.name: 'Nom de l''entreprise'
+suscription.business.description: 'Description'
+suscription.business.telephone: Téléphone
+suscription.business.streetaddress: Adresse / Rue
+suscription.business.postalcode: Code postal
+suscription.business.adresselocality: Ville
+suscription.business.addresscountry: Pays
+suscription.business.addressregion: Région (facultatif)
+suscription.streetaddress.placeholder: 3 rue par ici
+suscription.postalcode.placeholder: 75001
+suscription.adresselocality.placeholder: Paris
+suscription.addresscountry.placeholder: France
+suscription.addressregion.placeholder: Ile de France
 description.min: 'Vous devez saisir au minimum 1500 Caractères'
 homeadmin: 'Panneau d''aministration'
 admin.dashboard.title: 'Panneau de contrôle'
