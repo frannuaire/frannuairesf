@@ -25,7 +25,7 @@ class Link {
     const STATE_TROUBLE = 3; // if is there some trouble with http statu when you check it 
     const STATE_VALID = 4; // All Valid Links
     
-     
+    const MIN_CARACT_VALIDATOR = 2; //change the default min number caract validator 
     /**
      * @var integer
      * @ORM\Column(name="uid", type="integer", nullable=false )
