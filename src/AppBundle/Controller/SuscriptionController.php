@@ -98,8 +98,13 @@ class SuscriptionController extends Controller {
                     'notice', 'Your link was saved!'
             );
             $link = $this->validForm($form);
-
-            return $this->redirectToRoute('addbusiness', array('lid' => $link->getId()));
+            if ($link !== false) {
+                return $this->redirectToRoute('addbusiness', array('lid' => $link->getId()));
+            } else {
+                return $this->render('suscription/basic.html.twig', array(
+                            'form' => $form->createView(),
+                ));
+            }
         }
 
         return $this->render('suscription/basic.html.twig', array(
@@ -111,6 +116,17 @@ class SuscriptionController extends Controller {
         $link = $form->getData();
         if (strlen($link->getDescription()) < Link::MIN_CARACT_VALIDATOR) {
             $form->addError(new FormError($this->get('translator')->trans('description.min')));
+            return false;
+            return $this->render('suscription/basic.html.twig', array(
+                        'form' => $form->createView(),
+            ));
+        }
+        $linkExist = $this->getDoctrine()
+                ->getRepository(Link::class)
+                ->findOneBy(array('url' => $link->getUrl()));
+        if ($link->getUrl() == $linkExist->getUrl()) {
+            $form->addError(new FormError($this->get('translator')->trans('link.exist')));
+            return false;
             return $this->render('suscription/basic.html.twig', array(
                         'form' => $form->createView(),
             ));
