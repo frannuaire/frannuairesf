@@ -117,19 +117,21 @@ class SuscriptionController extends Controller {
         if (strlen($link->getDescription()) < Link::MIN_CARACT_VALIDATOR) {
             $form->addError(new FormError($this->get('translator')->trans('description.min')));
             return false;
-            return $this->render('suscription/basic.html.twig', array(
-                        'form' => $form->createView(),
-            ));
         }
         $linkExist = $this->getDoctrine()
                 ->getRepository(Link::class)
                 ->findOneBy(array('url' => $link->getUrl()));
-        if ($link->getUrl() == $linkExist->getUrl()) {
-            $form->addError(new FormError($this->get('translator')->trans('link.exist')));
+        if (NULL !== $linkExist) {
+            if ($link->getUrl() == $linkExist->getUrl()) {
+
+                $form->addError(new FormError($this->get('translator')->trans('link.exist')));
+                return false;
+            }
+        }
+        $check = $this->container->get('check');
+        if (!$check->isValidStatus($link->getUrl())) {
+            $form->addError(new FormError($this->get('translator')->trans('link.wrongStatus')));
             return false;
-            return $this->render('suscription/basic.html.twig', array(
-                        'form' => $form->createView(),
-            ));
         }
         $link->setState(Link::STATE_PENDING); // Attente de validation
 
@@ -217,7 +219,10 @@ class SuscriptionController extends Controller {
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->validLocalBusiness($form);
+         //   $this->validLocalBusiness($form);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($localBusiness);
+            $em->flush();
             $this->addFlash(
                     'notice', 'Your link was saved!'
             );

@@ -32,6 +32,9 @@ services:
     AppBundle\Manager\CategoryManager:
         public: true
 
+    check:
+        class: AppBundle\Services\Url\Check
+        public: true
     # add more services, or override services that need manual wiring
     # AppBundle\Service\ExampleService:
     #     arguments:
