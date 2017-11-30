@@ -209,6 +209,7 @@ class SuscriptionController extends Controller {
                     'attr' => array('class' => 'form-control', 'placeholder' => $this->get('translator')->trans('suscription.addresscountry.placeholder'))
                 ))
                 ->add('addressregion', TextType::class, array(
+                    'required' => false,
                     'label' => $this->get('translator')->trans('suscription.business.addressregion'),
                     'attr' => array('class' => 'form-control', 'placeholder' => $this->get('translator')->trans('suscription.addressregion.placeholder'))
                 ))
@@ -219,7 +220,7 @@ class SuscriptionController extends Controller {
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-         //   $this->validLocalBusiness($form);
+            //   $this->validLocalBusiness($form);
             $em = $this->getDoctrine()->getManager();
             $em->persist($localBusiness);
             $em->flush();

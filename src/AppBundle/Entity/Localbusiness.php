@@ -104,6 +104,13 @@ class Localbusiness {
      */
     private $postalcode;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string", length=255, nullable=true)
+     */
+    private $image;
+
     public function getId() {
         return $this->id;
     }
@@ -199,5 +206,13 @@ class Localbusiness {
     public function setPostalcode($postalcode) {
         $this->postalcode = $postalcode;
     }
+    public function getImage() {
+        return $this->image;
+    }
+
+    public function setImage($image) {
+        $this->image = $image;
+    }
+
 
 }

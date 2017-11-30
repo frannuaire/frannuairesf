@@ -9,6 +9,7 @@ use AppBundle\Entity\Category;
 use AppBundle\Entity\Link;
 use AppBundle\Entity\Comment;
 use AppBundle\Entity\Feed;
+use AppBundle\Entity\Localbusiness;
 
 /**
  * Description of AnnuaireController
@@ -49,6 +50,10 @@ class AnnuaireController extends Controller {
         $category = $this->getDoctrine()
                 ->getRepository(Category::class)
                 ->find($site->getCategory());
+        
+        $localBusiness = $this->getDoctrine()
+                ->getRepository(Localbusiness::class)
+                ->findOneBy(array("lid"=>$site->getId()));
 
         $sxe = null;
         if (count($rss) > 0) {
@@ -73,6 +78,7 @@ class AnnuaireController extends Controller {
                         'nbComments'=>$nbComments,
                         'rss' => $sxe,
                         'category'=>$category,
+                        'localbusiness'=>$localBusiness,
             ]);
     }
 }    
