@@ -21,6 +21,7 @@ class AppKernel extends Kernel {
             new ApiPlatform\Core\Bridge\Symfony\Bundle\ApiPlatformBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
+            new EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

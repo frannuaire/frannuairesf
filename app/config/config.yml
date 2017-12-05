@@ -94,3 +94,13 @@ ivory_ck_editor:
         advanced_config:
             toolbar:
   
+easy_admin:
+    entities:
+        - AppBundle\Entity\Boost
+        - AppBundle\Entity\Category
+        - AppBundle\Entity\Categorytext
+        - AppBundle\Entity\Comment
+        - AppBundle\Entity\Link
+        - AppBundle\Entity\Keyword
+        - AppBundle\Entity\Localbusiness
+        - AppBundle\Entity\User
