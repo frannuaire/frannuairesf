@@ -14,7 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 class AdminController extends Controller {
 
     /**
-     * @Route("/admin", name="homeadmin")
+     * @Route("/admin/", name="homeadmin")
      */
     public function indexAction(Request $request) {
 

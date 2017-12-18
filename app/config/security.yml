@@ -41,7 +41,7 @@ security:
 
     access_control:
         # require ROLE_ADMIN for /admin*
-        - { path: ^/admin*, roles: ROLE_ADMIN }
+        - { path: ^/admin*, roles: [ROLE_ADMIN] }
         - { path: ^/member*, roles: [ROLE_USER, ROLE_ADMIN] }
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
