@@ -81,8 +81,8 @@ fos_user:
     firewall_name: main
     user_class: AppBundle\Entity\User
     from_email:
-        address: "%mailer_user%"
-        sender_name: "%mailer_user%"
+        address: "kferrandon@gmail.com"
+        sender_name: "kferrandon@gmail.com"
    
 ivory_ck_editor:
     input_sync: true
